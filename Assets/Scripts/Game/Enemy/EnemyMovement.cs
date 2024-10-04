@@ -1,67 +1,94 @@
 using UnityEngine;
-using UnityEngine.AI;
+using Pathfinding;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float speed = 6f;
-    [SerializeField] private float moveDuration = 0.17f;
-    [SerializeField] private float cooldownDuration = 0.3f;
+    [Header("Grid Movement Settings")]
+    public float moveCooldown = 0.3f;
+    public float gridSize = 1.0f;
 
-    private NavMeshAgent agent;
-    private float originalSpeed;
+    private Seeker seeker;
+    private AIPath aiPath;
+    private Path path;
+    private Transform target;
+    private Vector3 targetPosition;
     private float moveTimer;
-    private float cooldownTimer;
-    private bool isMoving = true;
+    private bool isMoving = false;
+    private int currentWaypoint = 0;
 
-    private void Start()
+    private void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        aiPath = GetComponent<AIPath>();
+        seeker = GetComponent<Seeker>();
 
-        originalSpeed = speed;
-        agent.speed = speed;
-        moveTimer = moveDuration;
+        aiPath.canMove = false;
+        targetPosition = SnapToGrid(transform.position);
+        moveTimer = moveCooldown;
+        seeker.StartPath(transform.position, target.position, OnPathComplete);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) < 0.1f)
+        moveTimer -= Time.deltaTime;
+
+        if (moveTimer <= 0 && !isMoving && path != null)
         {
-            isMoving = false;
-            agent.speed = 0f;
-            cooldownTimer = cooldownDuration;
+            MoveEnemy();
+            moveTimer = moveCooldown;
+        }
+    }
+
+    private void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+
+            if (!isMoving)
+            {
+                MoveEnemy();
+            }
+        }
+    }
+
+    private void MoveEnemy()
+    {
+        if (currentWaypoint >= path.vectorPath.Count)
+        {
+            seeker.StartPath(transform.position, target.position, OnPathComplete);
             return;
         }
 
-        if (isMoving)
-        {
-            agent.SetDestination(target.position);
-            moveTimer -= Time.deltaTime;
-
-            if (moveTimer <= 0f)
-            {
-                StartCooldown();
-            }
-        }
-        else
-        {
-            cooldownTimer -= Time.deltaTime;
-
-            if (cooldownTimer <= 0f)
-            {
-                isMoving = true;
-                agent.speed = speed;
-                moveTimer = moveDuration;
-            }
-        }
+        Vector3 nextPosition = path.vectorPath[currentWaypoint];
+        targetPosition = SnapToGrid(nextPosition);
+        StartCoroutine(MoveToGridPosition(targetPosition));
+        currentWaypoint++;
     }
 
-    private void StartCooldown()
+    private IEnumerator MoveToGridPosition(Vector3 gridTarget)
     {
+        isMoving = true;
+
+        while (Vector3.Distance(transform.position, gridTarget) > 0.01f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, gridTarget, aiPath.maxSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        transform.position = gridTarget;
         isMoving = false;
-        agent.speed = 0f;
-        cooldownTimer = cooldownDuration;
+        seeker.StartPath(transform.position, target.position, OnPathComplete);
+    }
+
+    private Vector3 SnapToGrid(Vector3 position)
+    {
+        float x = Mathf.Floor(position.x / gridSize) * gridSize + gridSize / 2;
+        float y = Mathf.Floor(position.y / gridSize) * gridSize + gridSize / 2;
+        float z = position.z;
+
+        return new Vector3(x, y, z);
     }
 }

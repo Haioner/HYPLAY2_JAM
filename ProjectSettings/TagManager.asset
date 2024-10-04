@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 685921149
+    locked: 0
+  - name: Front
+    uniqueID: 3504958967
     locked: 0
   m_RenderingLayers:
   - Default

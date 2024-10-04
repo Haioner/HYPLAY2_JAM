@@ -6,10 +6,14 @@ public class MovementController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private PlayerController playerController;
     [SerializeField] private float moveDelay = 0.1f;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Wall Collider")]
     [SerializeField] private float xSize = 0.8f;
     [SerializeField] private float ySize = 0.8f;
+
+    [Header("Flip")]
+    [SerializeField] private Transform flipHolder;
 
     private Vector2 currentDirection = Vector2.zero;
     private Vector2 inputDirection = Vector2.zero;
@@ -34,6 +38,7 @@ public class MovementController : MonoBehaviour
         else
         {
             Move();
+            FlipSprite();
         }
     }
 
@@ -116,8 +121,16 @@ public class MovementController : MonoBehaviour
     private bool CheckCollisionInDirection(Vector2 direction)
     {
         Vector3 boxPosition = (Vector3)rb.position + new Vector3(direction.x, direction.y, 0);
-        Collider2D hit = Physics2D.OverlapBox(boxPosition, new Vector2(xSize, ySize), 0);
+        Collider2D hit = Physics2D.OverlapBox(boxPosition, new Vector2(xSize, ySize), 0, wallLayer);
         return hit != null;
+    }
+
+    private void FlipSprite()
+    {
+        if(inputDirection.x != 0)
+        {
+            flipHolder.localScale = new Vector3(Mathf.Sign(inputDirection.x), 1, 1);
+        }
     }
 
     private void OnDrawGizmos()
