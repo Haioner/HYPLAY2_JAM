@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86356c65269e24441b830d0ca9ce5360, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  accessToken: user_at_gobbbL0KSSoZ7oRj3rjSkv8zm3yGVhuyWToz9oSgPupwX668ChMc1hIusvosdcav
+  appName: 
+  appDescription: 
+  appUrl: 
+  timeoutHours: 24
+  usePopup: 1
+  currentApp:
+    id: d8471ca8-ad85-439a-867a-0314156eced2
+    secretKey: app_sk_5zL37elg_cdaI5mgN8ldIKAUmeHcDzCPCac_0I3qCj174MNO_eRQ-CXnQWvKLFGi
+    name: Hyplay2JAM
+    description: Hyplay.2 - 2024 - Gamejam
+    redirectUris:
+    - https://haioner.itch.io/hyplayjam
+    - myapp://token
+    - http://localhost
+    - https://html-classic.itch.zone/html/
+    url: https://haioner.itch.io/hyplayjam
+    iconImageAsset:
+      id: 57057c63-98c1-4a3c-bc24-b7394ef975bf
+      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/6b30661628b475fc2ad3717f6744c8bd-1727843323522.png
+    backgroundImageAsset:
+      id: d2e56ffd-04a4-440c-9ab3-e826c82e6586
+      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/d9cce148aa4b337090756bbca73bea0c-1727843323796.png
