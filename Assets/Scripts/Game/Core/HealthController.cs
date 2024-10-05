@@ -5,6 +5,8 @@ public class HealthController : MonoBehaviour, IDamage
     [SerializeField] private float maxHealth;
     private float currentHealth;
 
+    public event System.EventHandler OnDeath;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -26,6 +28,7 @@ public class HealthController : MonoBehaviour, IDamage
     {
         if(currentHealth <= 0)
         {
+            OnDeath?.Invoke(this, System.EventArgs.Empty);
             currentHealth = 0;
             Debug.Log("DIED");
         }

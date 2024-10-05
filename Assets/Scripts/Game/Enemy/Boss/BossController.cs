@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Transform player;
+    [SerializeField] private GameObject areaDanger;
+
+    private void OnEnable()
     {
-        
+        MovementController.OnEndMove += SpawnDangerInPlayer;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        MovementController.OnEndMove -= SpawnDangerInPlayer; 
+    }
+
+    private void SpawnDangerInPlayer(object sender, System.EventArgs e)
+    {
+        Instantiate(areaDanger, player.position, Quaternion.identity);
     }
 }

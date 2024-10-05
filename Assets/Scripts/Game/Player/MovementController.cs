@@ -28,6 +28,7 @@ public class MovementController : MonoBehaviour
     private Vector2 startedInput;
 
     public static event System.EventHandler OnStartMove;
+    public static event System.EventHandler OnEndMove;
 
     private void Awake()
     {
@@ -94,6 +95,8 @@ public class MovementController : MonoBehaviour
 
             if (Vector2.Distance(rb.position, targetPosition) < 0.01f)
             {
+                OnEndMove?.Invoke(this, System.EventArgs.Empty);
+
                 rb.position = targetPosition;
                 isMoving = false;
 
