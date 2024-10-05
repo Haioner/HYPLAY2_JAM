@@ -8,6 +8,10 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float moveDelay = 0.1f;
     [SerializeField] private LayerMask wallLayer;
 
+    [Header("Tilt")]
+    [SerializeField] private float tiltAngle = 6f;
+    [SerializeField] private float smoothTilt = 0.3f;
+
     [Header("Wall Collider")]
     [SerializeField] private float xSize = 0.8f;
     [SerializeField] private float ySize = 0.8f;
@@ -23,6 +27,8 @@ public class MovementController : MonoBehaviour
     private float moveCooldown = 0f;
     private Vector2 startedInput;
 
+    public static event System.EventHandler OnStartMove;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,8 +43,8 @@ public class MovementController : MonoBehaviour
         }
         else
         {
-            Move();
             FlipSprite();
+            Move();
         }
     }
 
@@ -110,6 +116,9 @@ public class MovementController : MonoBehaviour
 
         if (!CheckCollisionInDirection(inputDirection))
         {
+            if (!isMoving)
+                OnStartMove?.Invoke(this, System.EventArgs.Empty);
+
             targetPosition = nextPosition;
             isMoving = true;
             currentDirection = inputDirection;
@@ -127,10 +136,23 @@ public class MovementController : MonoBehaviour
 
     private void FlipSprite()
     {
-        if(inputDirection.x != 0)
+        float targetTilt = 0f;
+
+        if (inputDirection.x != 0)
         {
             flipHolder.localScale = new Vector3(Mathf.Sign(inputDirection.x), 1, 1);
+            targetTilt = -Mathf.Sign(inputDirection.x) * tiltAngle;
         }
+        else if (inputDirection.y != 0)
+        {
+            targetTilt = Mathf.Sign(inputDirection.y) * tiltAngle;
+        }
+
+        float currentTilt = flipHolder.localRotation.eulerAngles.z;
+        if (currentTilt > 180f) currentTilt -= 360f;
+
+        float newTilt = Mathf.Lerp(currentTilt, targetTilt, smoothTilt);
+        flipHolder.localRotation = Quaternion.Euler(0, 0, newTilt);
     }
 
     private void OnDrawGizmos()

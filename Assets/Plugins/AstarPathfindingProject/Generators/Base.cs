@@ -148,7 +148,7 @@ namespace Pathfinding {
 		/// Deprecated: Use the transform field (only available on some graph types) instead
 		/// </summary>
 		[System.Obsolete("Use the transform field (only available on some graph types) instead", true)]
-		public void SetMatrix (Matrix4x4 m) {
+		public void SetMatrix (int v, int v1, Matrix4x4 m) {
 			matrix = m;
 			inverseMatrix = m.inverse;
 		}
