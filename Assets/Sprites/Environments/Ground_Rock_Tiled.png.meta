@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 00e6aa1d88bf15147a8057f3bef7a636
+guid: fdec05e3f8f5ad447b8f1b7a0eea765b
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7818601353465371202
-    second: IdleBoss_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 19
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,89 +123,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleBoss_0
+      name: Ground_Rock_Tiled_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 258
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.4516879, y: 0.78790504}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eb5ee466e7fbe7390800000000000000
-      internalID: -7818601353465371202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleBoss_1
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 258
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.58175915, y: 0.7969302}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af3b32f53ae43e44099095d5f88e4a6f
-      internalID: -842612634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleBoss_2
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 277
-        width: 44
-        height: 10
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fab0cf939d966e4e90e90b14c1e1b12
-      internalID: 83532524
+      spriteID: 5384650868be9c642845fa492558934b
+      internalID: -1264768921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleBoss_4
+      name: Ground_Rock_Tiled_1
       rect:
         serializedVersion: 2
-        x: 72
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56386b9cc40a09499bdeca2f7e21454
+      internalID: 1466324477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ground_Rock_Tiled_2
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 156
-        height: 254
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 475b2fdd60c0df9409647ed5996f00f3
-      internalID: -1260438405
+      spriteID: 291059628fd741e4789cea81e9336275
+      internalID: -1876425961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ground_Rock_Tiled_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d94edd9e6781374cb2152a75126b609
+      internalID: -1486366585
       vertices: []
       indices: 
       edges: []
@@ -225,11 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IdleBoss_0: -7818601353465371202
-      IdleBoss_1: -842612634
-      IdleBoss_2: 83532524
-      IdleBoss_3: -365897891
-      IdleBoss_4: -1260438405
+      Ground_Rock_Tiled_0: -1264768921
+      Ground_Rock_Tiled_1: 1466324477
+      Ground_Rock_Tiled_2: -1876425961
+      Ground_Rock_Tiled_3: -1486366585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,51 @@
+using Pathfinding;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RoomManager : MonoBehaviour
+{
+    [Header("Room List")]
+    [SerializeField] private List<RoomController> roomsList = new List<RoomController>();
+
+    [Header("Spawner")]
+    [SerializeField] private Vector2 minMaxSpawnRange = new Vector2(0, 3);
+    [SerializeField] private List<RoomController> currentRooms = new List<RoomController>();
+
+    [Header("CACHE")]
+    [SerializeField] private ProceduralGridMover proceduralGrid;
+
+    public void SpawnNewRoom(Vector3 endPosition)
+    {
+        RoomController room = Instantiate(GetRandomRoom(), endPosition, Quaternion.identity, transform);
+        currentRooms.Add(room);
+    }
+
+    public void SetGridTarget(Transform roomCenter)
+    {
+        proceduralGrid.target = roomCenter;
+    }
+
+    public void RemoveFirstRoomFromList()
+    {
+        StartCoroutine(RemoveFirstRoomFromList_COROUTINE());
+    }
+
+    private IEnumerator RemoveFirstRoomFromList_COROUTINE()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(currentRooms[0].gameObject);
+        currentRooms.RemoveAt(0);
+    }
+
+    private RoomController GetRandomRoom()
+    {
+        return roomsList[(int)Random.Range(minMaxSpawnRange.x, minMaxSpawnRange.y)];
+    }
+
+    private void AddMinMaxSpawn()
+    {
+        if (minMaxSpawnRange.y < roomsList.Count)
+            minMaxSpawnRange.y++;
+    }
+}

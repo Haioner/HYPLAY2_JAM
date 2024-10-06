@@ -6,10 +6,10 @@ public class MeeleAttack : MonoBehaviour
     [SerializeField] private string collisionTag = "Player";
     public event System.EventHandler OnTriggerAttack;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.CompareTag(collisionTag))
-        { 
+        if (collision.gameObject.CompareTag(collisionTag))
+        {
             collision.gameObject.GetComponent<HealthController>().Damage(damage);
             OnTriggerAttack?.Invoke(this, System.EventArgs.Empty);
         }

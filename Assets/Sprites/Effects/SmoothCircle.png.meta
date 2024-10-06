@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 00e6aa1d88bf15147a8057f3bef7a636
+guid: 080023f6f922dd84b9fb7d589e3a7252
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7818601353465371202
-    second: IdleBoss_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 19
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,89 +123,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IdleBoss_0
+      name: DangerArea_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 258
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.4516879, y: 0.78790504}
+        y: 0
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb5ee466e7fbe7390800000000000000
-      internalID: -7818601353465371202
+      spriteID: afcd2a641341cd5e0800000000000000
+      internalID: -1883608342276678406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IdleBoss_1
+      name: DangerArea_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 258
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.58175915, y: 0.7969302}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af3b32f53ae43e44099095d5f88e4a6f
-      internalID: -842612634
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleBoss_2
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 277
-        width: 44
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fab0cf939d966e4e90e90b14c1e1b12
-      internalID: 83532524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IdleBoss_4
-      rect:
-        serializedVersion: 2
-        x: 72
+        x: 16
         y: 0
-        width: 156
-        height: 254
+        width: 16
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 475b2fdd60c0df9409647ed5996f00f3
-      internalID: -1260438405
+      spriteID: 8f1af1467f89256f0800000000000000
+      internalID: -697326803984866824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerArea_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7b57c84a2bf49aa0800000000000000
+      internalID: -6155018631680402564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerArea_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 662095b717651cc50800000000000000
+      internalID: 6683718367395250790
       vertices: []
       indices: 
       edges: []
@@ -225,11 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IdleBoss_0: -7818601353465371202
-      IdleBoss_1: -842612634
-      IdleBoss_2: 83532524
-      IdleBoss_3: -365897891
-      IdleBoss_4: -1260438405
+      DangerArea_SpriteSheet_0: -1883608342276678406
+      DangerArea_SpriteSheet_1: -697326803984866824
+      DangerArea_SpriteSheet_2: -6155018631680402564
+      DangerArea_SpriteSheet_3: 6683718367395250790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

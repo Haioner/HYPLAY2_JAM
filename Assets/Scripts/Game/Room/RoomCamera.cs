@@ -1,14 +1,15 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class RoomCamera : MonoBehaviour
 {
-    [SerializeField] private GameObject cinemachineCamera;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            cinemachineCamera.SetActive(true);
+            cinemachineCamera.enabled = true;
         }
     }
 
@@ -16,7 +17,7 @@ public class RoomCamera : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            cinemachineCamera.SetActive(false);
+            cinemachineCamera.enabled = false;
         }
     }
 }
