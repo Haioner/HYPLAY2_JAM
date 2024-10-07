@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -14,9 +15,11 @@ public class RoomManager : MonoBehaviour
 
     [Header("CACHE")]
     [SerializeField] private ProceduralGridMover proceduralGrid;
+    [SerializeField] private MMF_Player spawnRoomFEEDBACK;
 
     public void SpawnNewRoom(Vector3 endPosition)
     {
+        spawnRoomFEEDBACK.PlayFeedbacks();
         RoomController room = Instantiate(GetRandomRoom(), endPosition, Quaternion.identity, transform);
         currentRooms.Add(room);
     }
