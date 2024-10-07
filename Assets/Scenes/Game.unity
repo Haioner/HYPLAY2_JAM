@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 109427206}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9013,8 +9013,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 780641080}
-  areaDanger: {fileID: 433211518572917708, guid: 438d076ec3a3927468dd01f6d6b783b5, type: 3}
-  attacks: 3
+  explodePrefab: {fileID: 433211518572917708, guid: 438d076ec3a3927468dd01f6d6b783b5, type: 3}
+  attacks: 0
+  explosionCooldown: 1
+  gridRows: 7
+  gridColumns: 7
+  gridSize: 1
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 3840
 --- !u!95 &1413213524
 Animator:
   serializedVersion: 7

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8372930885938898956}
   - component: {fileID: 7198108287892963591}
   - component: {fileID: 2591383484220630390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4987,9 +4987,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1304053656197564772}
     m_Modifications:
+    - target: {fileID: 191329806177045712, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 198371647525710760, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
       propertyPath: m_Name
       value: AreaDanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 198371647525710760, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 783677319319465376, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5030,6 +5038,14 @@ PrefabInstance:
     - target: {fileID: 783677319319465376, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155769585160693301, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8683767871510888003, guid: 2445f8f3ed1f83c4a8db74144c3d8653, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
