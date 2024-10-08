@@ -17,7 +17,9 @@ public class RoomController : MonoBehaviour
     [Header("CACHE")]
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private Collider2D BarrierCollier;
+    [SerializeField] private SpriteMask spriteMask;
 
+    private List<GameObject> enemiesList = new List<GameObject>();
     private RoomManager roomManager;
     private BossMovement bossMovement;
     private bool hasTriggered;
@@ -29,6 +31,7 @@ public class RoomController : MonoBehaviour
 
     private void Awake()
     {
+        spriteMask.enabled = false;
         cinemachineCamera.Follow = GameObject.FindGameObjectWithTag("Player").transform;
         roomManager = FindFirstObjectByType<RoomManager>();
         bossMovement = FindFirstObjectByType<BossMovement>();
@@ -38,6 +41,7 @@ public class RoomController : MonoBehaviour
     {
         if(collision.CompareTag("Player") && !hasTriggered)
         {
+            roomManager.RemoveEnemiesLastRoom();
             moveDOT.DORestart();
             StartCoroutine(AnimateDissolveStep());
 
@@ -87,11 +91,27 @@ public class RoomController : MonoBehaviour
     private void DestroyLastRoom()
     {
         if (CanDestroyLastRoom)
+        {
             roomManager.RemoveFirstRoomFromList();
+        }
     }
 
     private void MoveBoss()
     {
         bossMovement.MoveBoss(bossPosition.position);
+    }
+
+    public void AddEnemy(GameObject enemy)
+    {
+        enemiesList.Add(enemy);
+    }
+
+    public void RemoveEnemies()
+    {
+        foreach (var enemy in enemiesList)
+        {
+            Destroy(enemy);
+        }
+        enemiesList.Clear();
     }
 }

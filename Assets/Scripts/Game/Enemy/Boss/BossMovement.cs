@@ -6,6 +6,7 @@ public class BossMovement : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float moveSpeed = 5f;
     private Vector3 targetPosition;
+    public bool IsMoving { get; private set; }
 
     public void MoveBoss(Vector3 targetPosition)
     {
@@ -15,6 +16,7 @@ public class BossMovement : MonoBehaviour
 
     public void StartMove_EVENT()
     {
+        IsMoving = true;
         StopAllCoroutines();
         StartCoroutine(SmoothMove());
     }
@@ -28,5 +30,6 @@ public class BossMovement : MonoBehaviour
         }
         transform.position = targetPosition;
         anim.Play("Enter");
+        IsMoving = false;
     }
 }

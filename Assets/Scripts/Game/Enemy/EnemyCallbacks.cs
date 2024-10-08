@@ -1,27 +1,43 @@
 using System.Collections;
 using DG.Tweening;
-using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyCallbacks : MonoBehaviour
 {
     [Header("Walk")]
     [SerializeField] private ParticleSystem walkParticle;
     [SerializeField] private DOTweenAnimation walkDOT;
+    EnemyMovement enemyMovement;
 
     [Header("Attack")]
     [SerializeField] private MeeleAttack meeleAttack;
 
+    [Header("Death")]
+    [SerializeField] private HealthController healthController;
+    [SerializeField] private ParticleSystem deathParticle;
+
     private void OnEnable()
     {
-        EnemyMovement.OnStartMove += StartMoveCallback;
+        healthController = GetComponent<HealthController>();
+        enemyMovement = GetComponent<EnemyMovement>();
+
+        enemyMovement.OnStartMove += StartMoveCallback;
         meeleAttack.OnTriggerAttack += StartAttackCallback;
+        healthController.OnDeath += DeathCallback;
     }
 
     private void OnDisable()
     {
-        EnemyMovement.OnStartMove -= StartMoveCallback;
+        enemyMovement.OnStartMove -= StartMoveCallback;
         meeleAttack.OnTriggerAttack -= StartAttackCallback;
+        healthController.OnDeath -= DeathCallback;
+    }
+
+    private void DeathCallback(object sender, System.EventArgs e)
+    {
+        Instantiate(deathParticle, transform.position, Quaternion.identity);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     #region Attack

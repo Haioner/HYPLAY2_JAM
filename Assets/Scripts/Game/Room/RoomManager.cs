@@ -51,4 +51,14 @@ public class RoomManager : MonoBehaviour
         if (minMaxSpawnRange.y < roomsList.Count)
             minMaxSpawnRange.y++;
     }
+
+    public void AddEnemy(GameObject enemy)
+    {
+        currentRooms[0].AddEnemy(enemy);
+    }
+
+    public void RemoveEnemiesLastRoom()
+    {
+        currentRooms[0].RemoveEnemies();
+    }
 }

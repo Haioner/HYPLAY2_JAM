@@ -9,35 +9,78 @@ public enum BossAttacks
 public class BossController : MonoBehaviour
 {
     [SerializeField] private Transform player;
+
     [Header("Attacks")]
-    [SerializeField] private GameObject explodePrefab;
     [SerializeField] private BossAttacks attacks;
+    [SerializeField] private Vector2 minMaxAttacksCooldown;
+    private float attacksTimer;
 
     [Header("Explode Area Settings")]
+    [SerializeField] private GameObject explodePrefab;
     [SerializeField] private float explosionCooldown = 5f;
     [SerializeField] private int gridRows = 3;
     [SerializeField] private int gridColumns = 3;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private LayerMask collisionLayer;
+    public static event System.EventHandler OnExplodeSpawn;
+    public bool isPath { get; private set; }
 
-    private float cooldownTimer;
+    [Header("Enemy Settings")]
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float enemyCooldown = 5f;
+    [SerializeField] private int enemyCount = 3;
+    [SerializeField] private RoomManager roomManager;
+    public static event System.EventHandler OnEnemySpawn;
+
+    private BossMovement bossMovement;
+    private float explosionCooldownTimer;
+    private float enemyCooldownTimer;
     private Vector3 lastCheckedPosition;
 
     private void Start()
     {
-        cooldownTimer = explosionCooldown;
+        bossMovement = GetComponent<BossMovement>();
+        explosionCooldownTimer = explosionCooldown;
+        enemyCooldownTimer = enemyCooldown;
+        attacksTimer = Random.Range(minMaxAttacksCooldown.x, minMaxAttacksCooldown.y);
     }
 
     private void Update()
     {
+        if (bossMovement.IsMoving) return;
+
+        //Attacks
+        attacksTimer -= Time.deltaTime;
+        if(attacksTimer <= 0f)
+        {
+            SwitchAttack();
+            attacksTimer = Random.Range(minMaxAttacksCooldown.x, minMaxAttacksCooldown.y);
+        }
+
+        //Path
+        IsPathing();
+
+        //Explode Area
         if (attacks == BossAttacks.ExplodeArea)
         {
-            cooldownTimer -= Time.deltaTime;
+            explosionCooldownTimer -= Time.deltaTime;
 
-            if (cooldownTimer <= 0f)
+            if (explosionCooldownTimer <= 0f)
             {
                 ExplodeArea();
-                cooldownTimer = explosionCooldown;
+                explosionCooldownTimer = explosionCooldown;
+            }
+        }
+
+        //Enemy
+        if (attacks == BossAttacks.Enemy)
+        {
+            enemyCooldownTimer -= Time.deltaTime;
+
+            if (enemyCooldownTimer <= 0f)
+            {
+                SpawnEnemies();
+                enemyCooldownTimer = enemyCooldown;
             }
         }
     }
@@ -52,6 +95,11 @@ public class BossController : MonoBehaviour
         MovementController.OnEndMove -= SpawnExplosionInPlayer;
     }
 
+    private void SwitchAttack()
+    {
+        attacks = (BossAttacks)Random.Range(0, System.Enum.GetValues(typeof(BossAttacks)).Length);
+    }
+
     #region Path
     private void SpawnExplosionInPlayer(object sender, System.EventArgs e)
     {
@@ -60,11 +108,20 @@ public class BossController : MonoBehaviour
             Instantiate(explodePrefab, player.position, Quaternion.identity);
         }
     }
+
+    private void IsPathing()
+    {
+        if (attacks == BossAttacks.ExplodePath)
+            isPath = true;
+        else
+            isPath = false;
+    }
     #endregion
 
     #region Explode Area
     private void ExplodeArea()
     {
+        OnExplodeSpawn?.Invoke(this, System.EventArgs.Empty);
         Vector3 startPosition = GetRandomClearPositionInView();
         if (startPosition == Vector3.zero)
         {
@@ -93,7 +150,29 @@ public class BossController : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Spawn Enemies
+    private void SpawnEnemies()
+    {
+        OnEnemySpawn?.Invoke(this, System.EventArgs.Empty);
+        for (int i = 0; i < enemyCount; i++)
+        {
+            Vector3 spawnPosition = GetRandomClearPositionInView();
+
+            if (spawnPosition == Vector3.zero)
+            {
+                Debug.LogWarning("Nenhum local sem colisão foi encontrado na visão da câmera para spawnar inimigos.");
+                return;
+            }
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            roomManager.AddEnemy(enemy);
+        }
+    }
+    #endregion
+
+    #region Custom Methods
     private Vector3 GetRandomClearPositionInView()
     {
         Camera cam = Camera.main;

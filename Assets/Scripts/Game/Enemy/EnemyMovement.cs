@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isMoving = false;
     private int currentWaypoint = 0;
 
-    public static event System.EventHandler OnStartMove;
+    public event System.EventHandler OnStartMove;
 
     private void Awake()
     {

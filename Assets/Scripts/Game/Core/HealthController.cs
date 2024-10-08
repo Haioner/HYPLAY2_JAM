@@ -30,7 +30,6 @@ public class HealthController : MonoBehaviour, IDamage
         {
             OnDeath?.Invoke(this, System.EventArgs.Empty);
             currentHealth = 0;
-            Debug.Log("DIED");
         }
     }
 }
