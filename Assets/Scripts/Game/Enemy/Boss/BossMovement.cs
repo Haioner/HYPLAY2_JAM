@@ -10,13 +10,13 @@ public class BossMovement : MonoBehaviour
 
     public void MoveBoss(Vector3 targetPosition)
     {
+        IsMoving = true;
         anim.Play("Leave");
         this.targetPosition = targetPosition;
     }
 
     public void StartMove_EVENT()
     {
-        IsMoving = true;
         StopAllCoroutines();
         StartCoroutine(SmoothMove());
     }

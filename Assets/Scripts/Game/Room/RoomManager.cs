@@ -37,6 +37,7 @@ public class RoomManager : MonoBehaviour
     private IEnumerator RemoveFirstRoomFromList_COROUTINE()
     {
         yield return new WaitForSeconds(1f);
+        currentRooms[0].RemoveEnemies();
         Destroy(currentRooms[0].gameObject);
         currentRooms.RemoveAt(0);
     }

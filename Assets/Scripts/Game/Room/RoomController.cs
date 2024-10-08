@@ -18,6 +18,7 @@ public class RoomController : MonoBehaviour
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private Collider2D BarrierCollier;
     [SerializeField] private SpriteMask spriteMask;
+    [SerializeField] private GameObject spikeTilemap;
 
     private List<GameObject> enemiesList = new List<GameObject>();
     private RoomManager roomManager;
@@ -31,6 +32,7 @@ public class RoomController : MonoBehaviour
 
     private void Awake()
     {
+        spikeTilemap.SetActive(Random.value > 0.5f);
         spriteMask.enabled = false;
         cinemachineCamera.Follow = GameObject.FindGameObjectWithTag("Player").transform;
         roomManager = FindFirstObjectByType<RoomManager>();
@@ -41,14 +43,15 @@ public class RoomController : MonoBehaviour
     {
         if(collision.CompareTag("Player") && !hasTriggered)
         {
+            hasTriggered = true;
+            BarrierCollier.enabled = true;
+
             roomManager.RemoveEnemiesLastRoom();
+            DestroyLastRoom();
             moveDOT.DORestart();
             StartCoroutine(AnimateDissolveStep());
 
-            hasTriggered = true;
-            BarrierCollier.enabled = true;
             SpawnRoom();
-            DestroyLastRoom();
             MoveBoss();
         }
     }

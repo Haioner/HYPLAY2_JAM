@@ -21,7 +21,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private int gridRows = 3;
     [SerializeField] private int gridColumns = 3;
     [SerializeField] private float gridSize = 1f;
-    [SerializeField] private LayerMask collisionLayer;
+    [SerializeField] private LayerMask explosionCollisionLayer;
     public static event System.EventHandler OnExplodeSpawn;
     public bool isPath { get; private set; }
 
@@ -30,6 +30,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private float enemyCooldown = 5f;
     [SerializeField] private int enemyCount = 3;
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private LayerMask enemyCollisionLayer;
     public static event System.EventHandler OnEnemySpawn;
 
     private BossMovement bossMovement;
@@ -103,7 +104,7 @@ public class BossController : MonoBehaviour
     #region Path
     private void SpawnExplosionInPlayer(object sender, System.EventArgs e)
     {
-        if (attacks == BossAttacks.ExplodePath)
+        if (attacks == BossAttacks.ExplodePath && !bossMovement.IsMoving)
         {
             Instantiate(explodePrefab, player.position, Quaternion.identity);
         }
@@ -122,7 +123,7 @@ public class BossController : MonoBehaviour
     private void ExplodeArea()
     {
         OnExplodeSpawn?.Invoke(this, System.EventArgs.Empty);
-        Vector3 startPosition = GetRandomClearPositionInView();
+        Vector3 startPosition = GetRandomClearPositionInView(explosionCollisionLayer);
         if (startPosition == Vector3.zero)
         {
             Debug.LogWarning("Nenhum local sem colisão foi encontrado na visão da câmera.");
@@ -143,7 +144,7 @@ public class BossController : MonoBehaviour
 
                 spawnPosition = SnapToGrid(spawnPosition);
 
-                if (!CheckCollision(spawnPosition))
+                if (!CheckCollision(spawnPosition, explosionCollisionLayer))
                 {
                     Instantiate(explodePrefab, spawnPosition, Quaternion.identity);
                 }
@@ -158,7 +159,7 @@ public class BossController : MonoBehaviour
         OnEnemySpawn?.Invoke(this, System.EventArgs.Empty);
         for (int i = 0; i < enemyCount; i++)
         {
-            Vector3 spawnPosition = GetRandomClearPositionInView();
+            Vector3 spawnPosition = GetRandomClearPositionInView(enemyCollisionLayer);
 
             if (spawnPosition == Vector3.zero)
             {
@@ -173,7 +174,7 @@ public class BossController : MonoBehaviour
     #endregion
 
     #region Custom Methods
-    private Vector3 GetRandomClearPositionInView()
+    private Vector3 GetRandomClearPositionInView(LayerMask layer)
     {
         Camera cam = Camera.main;
         Vector3 min = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
@@ -187,7 +188,7 @@ public class BossController : MonoBehaviour
 
             lastCheckedPosition = randomPosition;
 
-            if (!CheckCollision(randomPosition))
+            if (!CheckCollision(randomPosition, layer))
             {
                 return randomPosition;
             }
@@ -203,9 +204,9 @@ public class BossController : MonoBehaviour
         return new Vector3(snappedX, snappedY, position.z);
     }
 
-    private bool CheckCollision(Vector3 position)
+    private bool CheckCollision(Vector3 position, LayerMask layer)
     {
-        Collider2D hit = Physics2D.OverlapBox(position, new Vector2(0.8f, 0.8f), 0f, collisionLayer);
+        Collider2D hit = Physics2D.OverlapBox(position, new Vector2(0.8f, 0.8f), 0f, layer);
         return hit != null;
     }
 
