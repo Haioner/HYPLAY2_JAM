@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2065016326283655031}
   - component: {fileID: 557694013825171474}
   - component: {fileID: 7842328524800848284}
+  - component: {fileID: 3440875098404868432}
   - component: {fileID: 4712036910190830964}
   m_Layer: 9
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +80,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &7842328524800848284
 MonoBehaviour:
@@ -95,9 +96,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8448
   boxCheckDistance: 1
   boxSize: {x: 0.8, y: 0.8}
+  keyDrop: {fileID: 4115543139920225115, guid: a7a5376981c65cf42916693547b29372, type: 3}
+  healthController: {fileID: 3440875098404868432}
+  doorController: {fileID: 0}
+--- !u!114 &3440875098404868432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779517357825344470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d25730b40f68844fb78645ed1879c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
 --- !u!50 &4712036910190830964
 Rigidbody2D:
   serializedVersion: 4

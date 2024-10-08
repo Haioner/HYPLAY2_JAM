@@ -411,6 +411,15 @@ MonoBehaviour:
   - {fileID: 7187550143860103579}
   - {fileID: 8518884246774067647}
   dissolveSpeed: 0.8
+  doorController: {fileID: 3527577581394035642}
+  interactivesDoor:
+  - {fileID: 5983631918197151334, guid: c966a801e697a6141bb1b7c5056ba0fa, type: 3}
+  - {fileID: 3892795415793476188, guid: a7a5376981c65cf42916693547b29372, type: 3}
+  boxPrefab: {fileID: 7842328524800848284, guid: a0843a9219df01644944527aaac9013c, type: 3}
+  collidersLayer:
+    serializedVersion: 2
+    m_Bits: 9664
+  roomCollider: {fileID: 4132203880110454560}
 --- !u!1 &1309284243522648183
 GameObject:
   m_ObjectHideFlags: 0
@@ -13046,3 +13055,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 836077659440028259, guid: bcafafccd257a5e45bfcacd06c7c5fe6, type: 3}
   m_PrefabInstance: {fileID: 461322400567242232}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3527577581394035642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3932358641769918018, guid: bcafafccd257a5e45bfcacd06c7c5fe6, type: 3}
+  m_PrefabInstance: {fileID: 461322400567242232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6253da179d2094ebedc63f5f0aa093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

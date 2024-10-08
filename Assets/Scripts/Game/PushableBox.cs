@@ -7,12 +7,40 @@ public class PushableBox : MonoBehaviour
     [SerializeField] private float boxCheckDistance = 0.6f;
     [SerializeField] private Vector2 boxSize = new Vector2(0.8f, 0.8f);
 
+    [Header("Drop")]
+    [SerializeField] private KeyDoor keyDrop;
+    [SerializeField] private HealthController healthController;
+    [SerializeField] private DoorController doorController;
+
     private Vector2 pushDirection = Vector2.zero;
-    private bool isBeingPushed; 
+    private bool isBeingPushed;
+
+    public void SetDoorController(DoorController controller)
+    {
+        doorController = controller;
+    }
+
+    private void OnEnable()
+    {
+        healthController = GetComponent<HealthController>();
+        healthController.OnDeath += DropKey;
+    }
+
+    private void OnDisable()
+    {
+        healthController.OnDeath -= DropKey;
+    }
+
+    private void DropKey(object sender, System.EventArgs e)
+    {
+        KeyDoor key = Instantiate(keyDrop, transform.position, Quaternion.identity);
+        key.SetDoorController(doorController);
+        Destroy(gameObject);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Box"))
         {
             Vector2 playerPosition = collision.transform.position;
             Vector2 boxPosition = transform.position;
@@ -22,7 +50,7 @@ public class PushableBox : MonoBehaviour
                 pushDirection = (difference.x > 0) ? Vector2.right : Vector2.left;
             else
                 pushDirection = (difference.y > 0) ? Vector2.up : Vector2.down;
-            
+
             TryMoveBox(playerPosition);
             isBeingPushed = true;
         }
@@ -30,7 +58,7 @@ public class PushableBox : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Box"))
         {
             pushDirection = Vector2.zero;
             isBeingPushed = false;

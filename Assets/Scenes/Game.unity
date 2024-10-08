@@ -6010,6 +6010,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.016129017
       objectReference: {fileID: 0}
+    - target: {fileID: 3527577581394035642, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
+      propertyPath: isOpened
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4293398643358584943, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.725998
@@ -12780,7 +12784,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3328
   enemyPrefab: {fileID: 3594872617060540713, guid: cd6b6cc29b67cce49b3f992925c5503f, type: 3}
-  enemyCooldown: 3
+  enemyCooldown: 4
   enemyCount: 1
   roomManager: {fileID: 1375562830}
   enemyCollisionLayer:

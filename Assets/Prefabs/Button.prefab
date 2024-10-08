@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 5983631918197151334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e766fa34bf2de47aa19ab939ad40df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  doorController: {fileID: 0}
   buttonSprites:
   - {fileID: 1548701957, guid: 12d37d29a9999114589d44965dc0b6a7, type: 3}
   - {fileID: 2105870357, guid: 12d37d29a9999114589d44965dc0b6a7, type: 3}
