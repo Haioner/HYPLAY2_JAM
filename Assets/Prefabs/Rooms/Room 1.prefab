@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
+      propertyPath: canPuzzle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 14
@@ -1414,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[16].m_RefCount
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[17].m_RefCount
@@ -1506,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[39].m_RefCount
-      value: 47
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[40].m_RefCount
@@ -1654,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[97].second.m_TileSpriteIndex
-      value: 16
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[98].second.m_TileSpriteIndex

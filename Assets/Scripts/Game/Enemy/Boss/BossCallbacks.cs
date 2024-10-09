@@ -38,8 +38,6 @@ public class BossCallbacks : MonoBehaviour
 
     private void IsPath()
     {
-        if (bossMovement.IsMoving) return;
-
         anim.SetBool("Path", bossController.isPath);
 
         bool canEnableOrbital = anim.GetCurrentAnimatorStateInfo(0).IsName("Path");

@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public enum BossAttacks
 {
-    ExplodeArea, Enemy, ExplodePath
+    ExplodeArea, Enemy, ExplodePath, AreaAndPath, EnemyAndPath
 }
 
 public class BossController : MonoBehaviour
@@ -48,6 +48,9 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
+        //Path
+        IsPathing();
+
         if (bossMovement.IsMoving) return;
 
         //Attacks
@@ -58,11 +61,8 @@ public class BossController : MonoBehaviour
             attacksTimer = Random.Range(minMaxAttacksCooldown.x, minMaxAttacksCooldown.y);
         }
 
-        //Path
-        IsPathing();
-
         //Explode Area
-        if (attacks == BossAttacks.ExplodeArea)
+        if (attacks == BossAttacks.ExplodeArea || attacks == BossAttacks.AreaAndPath)
         {
             explosionCooldownTimer -= Time.deltaTime;
 
@@ -74,7 +74,7 @@ public class BossController : MonoBehaviour
         }
 
         //Enemy
-        if (attacks == BossAttacks.Enemy)
+        if (attacks == BossAttacks.Enemy || attacks == BossAttacks.EnemyAndPath)
         {
             enemyCooldownTimer -= Time.deltaTime;
 
@@ -104,7 +104,9 @@ public class BossController : MonoBehaviour
     #region Path
     private void SpawnExplosionInPlayer(object sender, System.EventArgs e)
     {
-        if (attacks == BossAttacks.ExplodePath && !bossMovement.IsMoving)
+        if (bossMovement.IsMoving) return;
+
+        if (attacks == BossAttacks.ExplodePath || attacks == BossAttacks.AreaAndPath || attacks == BossAttacks.EnemyAndPath)
         {
             Instantiate(explodePrefab, player.position, Quaternion.identity);
         }
@@ -112,7 +114,7 @@ public class BossController : MonoBehaviour
 
     private void IsPathing()
     {
-        if (attacks == BossAttacks.ExplodePath)
+        if ((attacks == BossAttacks.ExplodePath || attacks == BossAttacks.EnemyAndPath) && !bossMovement.IsMoving)
             isPath = true;
         else
             isPath = false;

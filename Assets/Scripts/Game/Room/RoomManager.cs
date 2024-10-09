@@ -12,6 +12,7 @@ public class RoomManager : MonoBehaviour
     [Header("Spawner")]
     [SerializeField] private Vector2 minMaxSpawnRange = new Vector2(0, 3);
     [SerializeField] private List<RoomController> currentRooms = new List<RoomController>();
+    private int currentRoom;
 
     [Header("CACHE")]
     [SerializeField] private ProceduralGridMover proceduralGrid;
@@ -19,6 +20,7 @@ public class RoomManager : MonoBehaviour
 
     public void SpawnNewRoom(Vector3 endPosition)
     {
+        AddRoomCount();
         spawnRoomFEEDBACK.PlayFeedbacks();
         RoomController room = Instantiate(GetRandomRoom(), endPosition, Quaternion.identity, transform);
         currentRooms.Add(room);
@@ -45,6 +47,13 @@ public class RoomManager : MonoBehaviour
     private RoomController GetRandomRoom()
     {
         return roomsList[(int)Random.Range(minMaxSpawnRange.x, minMaxSpawnRange.y)];
+    }
+
+    private void AddRoomCount()
+    {
+        currentRoom++;
+        if (currentRoom % 3 == 0)
+            AddMinMaxSpawn();
     }
 
     private void AddMinMaxSpawn()

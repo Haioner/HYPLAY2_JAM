@@ -24,11 +24,11 @@ MonoBehaviour:
     name: Hyplay2JAM
     description: Hyplay.2 - 2024 - Gamejam
     redirectUris:
-    - https://haioner.itch.io/hyplayjam
+    - https://haioner.itch.io/weakerofall
     - myapp://token
     - http://localhost
     - https://html-classic.itch.zone/html/
-    url: https://haioner.itch.io/hyplayjam
+    url: https://haioner.itch.io/weakerofall
     iconImageAsset:
       id: 57057c63-98c1-4a3c-bc24-b7394ef975bf
       cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/6b30661628b475fc2ad3717f6744c8bd-1727843323522.png

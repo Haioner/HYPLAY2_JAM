@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanDestroyLastRoom: 1
+  canPuzzle: 1
   endPoint: {fileID: 4474631916376190546}
   centerPosition: {fileID: 1683749000808746384}
   bossPosition: {fileID: 5013316966415756647}
@@ -418,7 +419,7 @@ MonoBehaviour:
   boxPrefab: {fileID: 7842328524800848284, guid: a0843a9219df01644944527aaac9013c, type: 3}
   collidersLayer:
     serializedVersion: 2
-    m_Bits: 9664
+    m_Bits: 11712
   roomCollider: {fileID: 4132203880110454560}
 --- !u!1 &1309284243522648183
 GameObject:
@@ -830,7 +831,7 @@ GameObject:
   - component: {fileID: 8518884246774067647}
   - component: {fileID: 927133227764017967}
   - component: {fileID: 1101915244160439366}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spike_Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10298,7 +10299,7 @@ GameObject:
   - component: {fileID: 5277072283957017406}
   - component: {fileID: 2662939618226090995}
   m_Layer: 8
-  m_Name: BarrierCollider
+  m_Name: StartBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12922,7 +12923,7 @@ GameObject:
   - component: {fileID: 9145580025995496147}
   - component: {fileID: 6815878032879902634}
   m_Layer: 8
-  m_Name: BarrierCollider (3)
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

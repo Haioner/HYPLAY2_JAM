@@ -7,7 +7,9 @@ using UnityEngine.Tilemaps;
 
 public class RoomController : MonoBehaviour
 {
+    [Header("Start Room")]
     [SerializeField] private bool CanDestroyLastRoom = true;
+    [SerializeField] private bool canPuzzle = true;
 
     [Header("Positions")]
     [SerializeField] private Transform endPoint;
@@ -48,7 +50,8 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
-        StartPuzzle();
+        if (canPuzzle)
+            StartPuzzle();
     }
 
     private void StartPuzzle()
