@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class BossCallbacks : MonoBehaviour
@@ -6,6 +7,7 @@ public class BossCallbacks : MonoBehaviour
     [SerializeField] private ParticleSystem handEnemyParticle;
     [SerializeField] private Transform rightHand, leftHand;
     [SerializeField] private GameObject[] orbitalVFX;
+    [SerializeField] private MMF_Player explodeFEEDBACK;
 
     private BossMovement bossMovement;
     private BossController bossController;
@@ -55,6 +57,7 @@ public class BossCallbacks : MonoBehaviour
 
     public void SpawnExplodeParticle_EVENT()
     {
+        explodeFEEDBACK.PlayFeedbacks();
         FindFirstObjectByType<CinemachineShake>().ShakeCamera();
         Instantiate(handExplodeParticle, rightHand.position, Quaternion.identity, rightHand);
         Instantiate(handExplodeParticle, leftHand.position, Quaternion.identity, leftHand);

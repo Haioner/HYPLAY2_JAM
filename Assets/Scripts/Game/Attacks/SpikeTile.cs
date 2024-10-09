@@ -11,6 +11,7 @@ public class SpikeTile : MonoBehaviour
     [SerializeField] private float damageDelay = 1f;
     [SerializeField] private float spikeActiveDuration = 2f;
     [SerializeField] private int damageAmount = 1;
+    [SerializeField] private ParticleSystem spikeParticle;
     private HashSet<Vector3Int> activatedTiles = new HashSet<Vector3Int>();
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -21,6 +22,11 @@ public class SpikeTile : MonoBehaviour
 
             if (tilemap.GetTile(tilePosition) == spikeHoleTile && !activatedTiles.Contains(tilePosition))
             {
+                //Particle
+                Vector3 worldPosition = tilemap.CellToWorld(tilePosition) + tilemap.cellSize / 2;
+                Instantiate(spikeParticle, worldPosition, Quaternion.identity, transform);
+
+                //Add
                 activatedTiles.Add(tilePosition);
                 StartCoroutine(ActivateSpike(tilePosition, collision.gameObject));
             }

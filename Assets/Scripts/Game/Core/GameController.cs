@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
         currentScore++;
         currentScoreText.text = "Score " + currentScore.ToString();
 
-        SubmitScore();
+        //SubmitScore();
     }
 
     private async void SubmitScore()

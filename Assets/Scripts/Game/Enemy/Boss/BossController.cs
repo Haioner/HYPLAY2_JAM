@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,7 +15,7 @@ public class BossController : MonoBehaviour
     [Header("Attacks")]
     [SerializeField] private BossAttacks attacks;
     [SerializeField] private Vector2 minMaxAttacksCooldown;
-    private float attacksTimer;
+    [SerializeField] private float attacksTimer;
 
     [Header("Explode Area Settings")]
     [SerializeField] private GameObject explodePrefab;
@@ -23,6 +24,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private int gridColumns = 3;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private LayerMask explosionCollisionLayer;
+    [SerializeField] private MMF_Player prepareExplosionFEEDBACK;
+    [SerializeField] private MMF_Player pathFEEDBACK;
     public static event System.EventHandler OnExplodeSpawn;
     public bool isPath { get; private set; }
 
@@ -60,6 +63,9 @@ public class BossController : MonoBehaviour
         {
             SwitchAttack();
             attacksTimer = Random.Range(minMaxAttacksCooldown.x, minMaxAttacksCooldown.y);
+
+            if (attacks == BossAttacks.AreaAndPath || attacks == BossAttacks.EnemyAndPath)
+                attacksTimer /= 2;
         }
 
         //Explode Area
@@ -109,6 +115,7 @@ public class BossController : MonoBehaviour
 
         if (attacks == BossAttacks.ExplodePath || attacks == BossAttacks.AreaAndPath || attacks == BossAttacks.EnemyAndPath)
         {
+            pathFEEDBACK.PlayFeedbacks();
             Instantiate(explodePrefab, player.position, Quaternion.identity);
         }
     }
@@ -125,6 +132,7 @@ public class BossController : MonoBehaviour
     #region Explode Area
     private void ExplodeArea()
     {
+        prepareExplosionFEEDBACK.PlayFeedbacks();
         OnExplodeSpawn?.Invoke(this, System.EventArgs.Empty);
         Vector3 startPosition = GetRandomClearPositionAroundPlayer(explosionCollisionLayer, 8);
 
@@ -161,6 +169,7 @@ public class BossController : MonoBehaviour
     #region Spawn Enemies
     private void SpawnEnemies()
     {
+        prepareExplosionFEEDBACK.PlayFeedbacks();
         OnEnemySpawn?.Invoke(this, System.EventArgs.Empty);
         for (int i = 0; i < enemyCount; i++)
         {
