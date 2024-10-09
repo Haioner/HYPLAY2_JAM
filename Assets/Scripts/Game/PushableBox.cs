@@ -8,6 +8,7 @@ public class PushableBox : MonoBehaviour
     [SerializeField] private Vector2 boxSize = new Vector2(0.8f, 0.8f);
 
     [Header("Drop")]
+    public bool hasDrop;
     [SerializeField] private KeyDoor keyDrop;
     [SerializeField] private HealthController healthController;
     [SerializeField] private DoorController doorController;
@@ -33,8 +34,12 @@ public class PushableBox : MonoBehaviour
 
     private void DropKey(object sender, System.EventArgs e)
     {
-        KeyDoor key = Instantiate(keyDrop, transform.position, Quaternion.identity);
-        key.SetDoorController(doorController);
+        if (hasDrop)
+        {
+            KeyDoor key = Instantiate(keyDrop, transform.position, Quaternion.identity);
+            key.SetDoorController(doorController);
+        }
+        FindFirstObjectByType<RoomManager>().RemoveBoxDropFirstRoom();
         Destroy(gameObject);
     }
 

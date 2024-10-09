@@ -9,6 +9,7 @@ public enum BossAttacks
 public class BossController : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    [SerializeField] private MovementController playerMovement;
 
     [Header("Attacks")]
     [SerializeField] private BossAttacks attacks;
@@ -114,7 +115,7 @@ public class BossController : MonoBehaviour
 
     private void IsPathing()
     {
-        if ((attacks == BossAttacks.ExplodePath || attacks == BossAttacks.EnemyAndPath) && !bossMovement.IsMoving)
+        if ((attacks == BossAttacks.ExplodePath || attacks == BossAttacks.EnemyAndPath || attacks == BossAttacks.AreaAndPath) && !bossMovement.IsMoving)
             isPath = true;
         else
             isPath = false;
@@ -125,7 +126,8 @@ public class BossController : MonoBehaviour
     private void ExplodeArea()
     {
         OnExplodeSpawn?.Invoke(this, System.EventArgs.Empty);
-        Vector3 startPosition = GetRandomClearPositionInView(explosionCollisionLayer);
+        Vector3 startPosition = GetRandomClearPositionAroundPlayer(explosionCollisionLayer, 8);
+
         if (startPosition == Vector3.zero)
         {
             Debug.LogWarning("Nenhum local sem colisão foi encontrado na visão da câmera.");
@@ -146,13 +148,14 @@ public class BossController : MonoBehaviour
 
                 spawnPosition = SnapToGrid(spawnPosition);
 
-                if (!CheckCollision(spawnPosition, explosionCollisionLayer))
+                if (!CheckCollision(spawnPosition, explosionCollisionLayer) && IsInCameraView(spawnPosition))
                 {
                     Instantiate(explodePrefab, spawnPosition, Quaternion.identity);
                 }
             }
         }
     }
+
     #endregion
 
     #region Spawn Enemies
@@ -161,7 +164,7 @@ public class BossController : MonoBehaviour
         OnEnemySpawn?.Invoke(this, System.EventArgs.Empty);
         for (int i = 0; i < enemyCount; i++)
         {
-            Vector3 spawnPosition = GetRandomClearPositionInView(enemyCollisionLayer);
+            Vector3 spawnPosition = GetRandomClearPositionAroundPlayer(enemyCollisionLayer, 8);
 
             if (spawnPosition == Vector3.zero)
             {
@@ -169,34 +172,59 @@ public class BossController : MonoBehaviour
                 return;
             }
 
-            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            roomManager.AddEnemy(enemy);
+            if (IsInCameraView(spawnPosition)) // Verifica se está dentro da visão da câmera
+            {
+                GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                roomManager.AddEnemy(enemy);
+            }
+            else
+            {
+                Debug.LogWarning("Posição fora da visão da câmera para spawnar inimigos.");
+            }
         }
     }
     #endregion
 
     #region Custom Methods
-    private Vector3 GetRandomClearPositionInView(LayerMask layer)
+    private Vector3 GetRandomClearPositionAroundPlayer(LayerMask layer, float radius)
     {
-        Camera cam = Camera.main;
-        Vector3 min = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
-        Vector3 max = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
+        Vector3 playerPosition = player.position;
+        Vector2 inputDirection = playerMovement.GetInputDirection();
+
+        if (inputDirection == Vector2.zero)
+        {
+            inputDirection = Random.insideUnitCircle.normalized;
+        }
 
         for (int attempt = 0; attempt < 1000; attempt++)
         {
-            float randomX = Random.Range(min.x, max.x);
-            float randomY = Random.Range(min.y, max.y);
-            Vector3 randomPosition = SnapToGrid(new Vector3(randomX, randomY, 0));
+            Vector2 normalizedInputDirection = inputDirection.normalized;
+
+            Vector3 randomPosition = playerPosition + new Vector3(
+                normalizedInputDirection.x,
+                normalizedInputDirection.y,
+                0) * Random.Range(0f, radius);
+
+            randomPosition = SnapToGrid(randomPosition);
 
             lastCheckedPosition = randomPosition;
 
-            if (!CheckCollision(randomPosition, layer))
+            if (!CheckCollision(randomPosition, layer) && IsInCameraView(randomPosition))
             {
                 return randomPosition;
             }
         }
 
         return Vector3.zero;
+    }
+
+    private bool IsInCameraView(Vector3 position)
+    {
+        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(position);
+
+        return viewportPosition.x >= 0 && viewportPosition.x <= 1 &&
+               viewportPosition.y >= 0 && viewportPosition.y <= 1 &&
+               viewportPosition.z > 0;
     }
 
     private Vector3 SnapToGrid(Vector3 position)

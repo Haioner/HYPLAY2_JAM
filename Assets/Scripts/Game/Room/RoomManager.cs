@@ -36,6 +36,16 @@ public class RoomManager : MonoBehaviour
         StartCoroutine(RemoveFirstRoomFromList_COROUTINE());
     }
 
+    public void RemoveBoxDropFirstRoom()
+    {
+        currentRooms[0].RemoveDropFromBoxes();
+    }
+
+    public void DestroyButtonAndBoxesFirstRoom()
+    {
+        currentRooms[0].DestroyButtonAndBoxes();
+    }
+
     private IEnumerator RemoveFirstRoomFromList_COROUTINE()
     {
         yield return new WaitForSeconds(1f);

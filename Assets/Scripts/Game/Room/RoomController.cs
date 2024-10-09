@@ -38,6 +38,8 @@ public class RoomController : MonoBehaviour
     [SerializeField] private PushableBox boxPrefab;
     [SerializeField] private LayerMask collidersLayer;
     [SerializeField] private PolygonCollider2D roomCollider;
+    private List<PushableBox> currentBoxes = new List<PushableBox>();
+    private ButtonController currentButton;
 
     private void Awake()
     {
@@ -63,7 +65,7 @@ public class RoomController : MonoBehaviour
             doorController.SetDoor(false);
 
             float randomChance = Random.value;
-            GameObject interactivePrefab = randomChance > 0.3f ? interactivesDoor[1] : interactivesDoor[0];
+            GameObject interactivePrefab = randomChance > 0.9f ? interactivesDoor[1] : interactivesDoor[0];
 
             Vector3 randomPosition = GetRandomClearPositionInRoom(collidersLayer);
             GameObject interactive = Instantiate(interactivePrefab, randomPosition, Quaternion.identity, transform);
@@ -71,6 +73,7 @@ public class RoomController : MonoBehaviour
             if (interactive.TryGetComponent(out ButtonController button))
             {
                 button.SetDoorController(doorController);
+                currentButton = button;
 
                 int randomBoxes = Random.Range(3, 5);
                 for (int i = 0; i < randomBoxes; i++)
@@ -78,12 +81,34 @@ public class RoomController : MonoBehaviour
                     Vector3 boxPosition = GetNearPosition(randomPosition);
                     PushableBox box = Instantiate(boxPrefab, boxPosition, Quaternion.identity, transform);
                     box.SetDoorController(doorController);
+                    currentBoxes.Add(box);
                 }
             }
             else if (interactive.TryGetComponent(out KeyDoor key))
             {
                 key.SetDoorController(doorController);
             }
+        }
+    }
+
+    public void RemoveDropFromBoxes()
+    {
+        foreach (var box in currentBoxes)
+        {
+            if (box != null)
+                box.hasDrop = false;
+        }
+    }
+
+    public void DestroyButtonAndBoxes()
+    {
+        if (currentButton == null) return;
+
+        currentButton.gameObject.SetActive(false);
+        foreach (var box in currentBoxes)
+        {
+            if (box != null)
+                box.gameObject.SetActive(false);
         }
     }
 
@@ -95,7 +120,7 @@ public class RoomController : MonoBehaviour
 
         for (int attempt = 0; attempt < 1000; attempt++)
         {
-            randomRadius = Random.Range(1f, 4f);
+            randomRadius = Random.Range(2f, 4f);
             randomAngle = Random.Range(0f, 2f * Mathf.PI);
 
             float offsetX = Mathf.Cos(randomAngle) * randomRadius;
@@ -146,7 +171,7 @@ public class RoomController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && !hasTriggered)
+        if (collision.CompareTag("Player") && !hasTriggered)
         {
             hasTriggered = true;
             BarrierCollier.enabled = true;

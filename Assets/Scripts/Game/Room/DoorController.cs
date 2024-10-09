@@ -9,23 +9,33 @@ public class DoorController : MonoBehaviour
     [SerializeField] private UnityEvent closeEvent;
 
     private bool isFirstOpened;
+    private bool isForever;
 
     private void Start()
     {
         UpdateDoor();
     }
 
-    public void SwitchDoor()
-    {
-        isOpened = !isOpened;
-        UpdateDoor();
-    }
-
     public void SetDoor(bool state)
     {
-        isOpened = state;
-        UpdateDoor();
+        if (!isForever)
+            isOpened = state;
 
+        UpdateDoor();
+        IsFirstTime();
+    }
+
+    public void SetDoorOpenForever()
+    {
+        isForever = true;
+        isOpened = true;
+
+        UpdateDoor();
+        IsFirstTime();
+    }
+
+    private void IsFirstTime()
+    {
         if (!isFirstOpened && isOpened)
         {
             isFirstOpened = true;

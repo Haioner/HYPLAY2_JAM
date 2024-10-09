@@ -12889,7 +12889,7 @@ MonoBehaviour:
   - {fileID: 3445912102328467239, guid: daa02114c908fec4c982d86a7c050b5b, type: 3}
   - {fileID: 3445912102328467239, guid: 274afd0516c9b2b42b86c34a6bbb8589, type: 3}
   - {fileID: 3445912102328467239, guid: 9c62055f86ce97c4781c78f728885e46, type: 3}
-  minMaxSpawnRange: {x: 0, y: 3}
+  minMaxSpawnRange: {x: 0, y: 5}
   currentRooms:
   - {fileID: 1058807123}
   proceduralGrid: {fileID: 1554029960}
@@ -12964,18 +12964,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 780641080}
+  playerMovement: {fileID: 780641082}
   attacks: 0
   minMaxAttacksCooldown: {x: 5, y: 10}
   explodePrefab: {fileID: 433211518572917708, guid: 438d076ec3a3927468dd01f6d6b783b5, type: 3}
   explosionCooldown: 1
-  gridRows: 8
-  gridColumns: 8
+  gridRows: 6
+  gridColumns: 6
   gridSize: 1
   explosionCollisionLayer:
     serializedVersion: 2
     m_Bits: 3328
   enemyPrefab: {fileID: 3594872617060540713, guid: cd6b6cc29b67cce49b3f992925c5503f, type: 3}
-  enemyCooldown: 4
+  enemyCooldown: 2
   enemyCount: 1
   roomManager: {fileID: 1375562830}
   enemyCollisionLayer:

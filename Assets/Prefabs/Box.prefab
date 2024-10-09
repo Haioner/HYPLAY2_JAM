@@ -99,6 +99,7 @@ MonoBehaviour:
     m_Bits: 8448
   boxCheckDistance: 1
   boxSize: {x: 0.8, y: 0.8}
+  hasDrop: 1
   keyDrop: {fileID: 4115543139920225115, guid: a7a5376981c65cf42916693547b29372, type: 3}
   healthController: {fileID: 3440875098404868432}
   doorController: {fileID: 0}

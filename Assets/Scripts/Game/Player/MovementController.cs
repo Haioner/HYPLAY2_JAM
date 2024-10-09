@@ -87,6 +87,11 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    public Vector2 GetInputDirection()
+    {
+        return inputDirection;
+    }
+
     private void Move()
     {
         if (isMoving)
