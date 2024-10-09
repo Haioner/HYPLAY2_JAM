@@ -21,7 +21,7 @@ MonoBehaviour:
   currentApp:
     id: d8471ca8-ad85-439a-867a-0314156eced2
     secretKey: app_sk_5zL37elg_cdaI5mgN8ldIKAUmeHcDzCPCac_0I3qCj174MNO_eRQ-CXnQWvKLFGi
-    name: Hyplay2JAM
+    name: Weaker of All
     description: Hyplay.2 - 2024 - Gamejam
     redirectUris:
     - https://haioner.itch.io/weakerofall
