@@ -12976,7 +12976,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3328
   enemyPrefab: {fileID: 3594872617060540713, guid: cd6b6cc29b67cce49b3f992925c5503f, type: 3}
-  enemyCooldown: 2
+  enemyCooldown: 3
   enemyCount: 1
   roomManager: {fileID: 1375562830}
   enemyCollisionLayer:

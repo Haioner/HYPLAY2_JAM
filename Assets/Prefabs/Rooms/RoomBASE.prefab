@@ -413,10 +413,7 @@ MonoBehaviour:
   - {fileID: 8518884246774067647}
   dissolveSpeed: 0.8
   doorController: {fileID: 3527577581394035642}
-  interactivesDoor:
-  - {fileID: 5983631918197151334, guid: c966a801e697a6141bb1b7c5056ba0fa, type: 3}
-  - {fileID: 3892795415793476188, guid: a7a5376981c65cf42916693547b29372, type: 3}
-  boxPrefab: {fileID: 7842328524800848284, guid: a0843a9219df01644944527aaac9013c, type: 3}
+  keyController: {fileID: 4115543139920225115, guid: a7a5376981c65cf42916693547b29372, type: 3}
   collidersLayer:
     serializedVersion: 2
     m_Bits: 11712

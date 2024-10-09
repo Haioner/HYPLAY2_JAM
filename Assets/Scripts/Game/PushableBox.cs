@@ -39,7 +39,6 @@ public class PushableBox : MonoBehaviour
             KeyDoor key = Instantiate(keyDrop, transform.position, Quaternion.identity);
             key.SetDoorController(doorController);
         }
-        FindFirstObjectByType<RoomManager>().RemoveBoxDropFirstRoom();
         Destroy(gameObject);
     }
 

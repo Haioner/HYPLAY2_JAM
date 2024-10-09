@@ -15,7 +15,6 @@ public class KeyDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !hasTriggered)
         {
-            FindFirstObjectByType<RoomManager>().DestroyButtonAndBoxesFirstRoom();
             hasTriggered = true;
             doorController.SetDoorOpenForever();
             Instantiate(pickupParticle, transform.position, Quaternion.identity);

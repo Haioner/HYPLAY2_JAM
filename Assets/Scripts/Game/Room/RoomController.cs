@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Tilemaps;
 
 public class RoomController : MonoBehaviour
@@ -34,12 +35,9 @@ public class RoomController : MonoBehaviour
 
     [Header("Door")]
     [SerializeField] private DoorController doorController;
-    [SerializeField] private GameObject[] interactivesDoor;
-    [SerializeField] private PushableBox boxPrefab;
+    [SerializeField] private KeyDoor keyController;
     [SerializeField] private LayerMask collidersLayer;
     [SerializeField] private PolygonCollider2D roomCollider;
-    private List<PushableBox> currentBoxes = new List<PushableBox>();
-    private ButtonController currentButton;
 
     private void Awake()
     {
@@ -64,54 +62,11 @@ public class RoomController : MonoBehaviour
         {
             doorController.SetDoor(false);
 
-            float randomChance = Random.value;
-            GameObject interactivePrefab = randomChance > 0.9f ? interactivesDoor[1] : interactivesDoor[0];
-
             Vector3 randomPosition = GetRandomClearPositionInRoom(collidersLayer);
-            GameObject interactive = Instantiate(interactivePrefab, randomPosition, Quaternion.identity, transform);
-
-            if (interactive.TryGetComponent(out ButtonController button))
-            {
-                button.SetDoorController(doorController);
-                currentButton = button;
-
-                int randomBoxes = Random.Range(3, 5);
-                for (int i = 0; i < randomBoxes; i++)
-                {
-                    Vector3 boxPosition = GetNearPosition(randomPosition);
-                    PushableBox box = Instantiate(boxPrefab, boxPosition, Quaternion.identity, transform);
-                    box.SetDoorController(doorController);
-                    currentBoxes.Add(box);
-                }
-            }
-            else if (interactive.TryGetComponent(out KeyDoor key))
-            {
-                key.SetDoorController(doorController);
-            }
+            KeyDoor currentKey = Instantiate(keyController, randomPosition, Quaternion.identity, transform);
+            currentKey.SetDoorController(doorController);
         }
     }
-
-    public void RemoveDropFromBoxes()
-    {
-        foreach (var box in currentBoxes)
-        {
-            if (box != null)
-                box.hasDrop = false;
-        }
-    }
-
-    public void DestroyButtonAndBoxes()
-    {
-        if (currentButton == null) return;
-
-        currentButton.gameObject.SetActive(false);
-        foreach (var box in currentBoxes)
-        {
-            if (box != null)
-                box.gameObject.SetActive(false);
-        }
-    }
-
     #region Custom Methods
     private Vector3 GetNearPosition(Vector3 referencePosition)
     {

@@ -18,6 +18,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private ProceduralGridMover proceduralGrid;
     [SerializeField] private MMF_Player spawnRoomFEEDBACK;
 
+    private Queue<RoomController> lastRoomsQueue = new Queue<RoomController>();
+
     public void SpawnNewRoom(Vector3 endPosition)
     {
         AddRoomCount();
@@ -36,16 +38,6 @@ public class RoomManager : MonoBehaviour
         StartCoroutine(RemoveFirstRoomFromList_COROUTINE());
     }
 
-    public void RemoveBoxDropFirstRoom()
-    {
-        currentRooms[0].RemoveDropFromBoxes();
-    }
-
-    public void DestroyButtonAndBoxesFirstRoom()
-    {
-        currentRooms[0].DestroyButtonAndBoxes();
-    }
-
     private IEnumerator RemoveFirstRoomFromList_COROUTINE()
     {
         yield return new WaitForSeconds(1f);
@@ -56,7 +48,23 @@ public class RoomManager : MonoBehaviour
 
     private RoomController GetRandomRoom()
     {
-        return roomsList[(int)Random.Range(minMaxSpawnRange.x, minMaxSpawnRange.y)];
+        RoomController selectedRoom;
+        int attempts = 0;
+
+        do
+        {
+            selectedRoom = roomsList[(int)Random.Range(minMaxSpawnRange.x, minMaxSpawnRange.y)];
+            attempts++;
+        }
+        while (lastRoomsQueue.Contains(selectedRoom) && attempts < 10);
+
+        lastRoomsQueue.Enqueue(selectedRoom);
+        if (lastRoomsQueue.Count > 2)
+        {
+            lastRoomsQueue.Dequeue();
+        }
+
+        return selectedRoom;
     }
 
     private void AddRoomCount()
