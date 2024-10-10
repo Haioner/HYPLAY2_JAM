@@ -16,6 +16,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private BossAttacks attacks;
     [SerializeField] private Vector2 minMaxAttacksCooldown;
     [SerializeField] private float attacksTimer;
+    private bool canAttack = true;
 
     [Header("Explode Area Settings")]
     [SerializeField] private GameObject explodePrefab;
@@ -52,6 +53,8 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
+        if (!canAttack) return;
+
         //Path
         IsPathing();
 
@@ -91,6 +94,11 @@ public class BossController : MonoBehaviour
                 enemyCooldownTimer = enemyCooldown;
             }
         }
+    }
+
+    public void SetCanAttack(bool canAttack)
+    {
+        this.canAttack = canAttack;
     }
 
     private void OnEnable()

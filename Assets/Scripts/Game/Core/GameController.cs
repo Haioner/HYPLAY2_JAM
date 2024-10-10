@@ -1,4 +1,5 @@
 using HYPLAY.Leaderboards.Runtime;
+using System.Collections.Generic;
 using HYPLAY.Core.Runtime;
 using UnityEngine;
 using TMPro;
@@ -7,12 +8,17 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    [SerializeField] private HyplayLeaderboard leaderboard;
+    public HyplayLeaderboard Leaderboard;
+    [SerializeField] private HyplayLeaderboard.OrderBy orderBy;
+    [SerializeField, Range(1, 15)] private int numScoresToShow = 15;
+    public Dictionary<string, double> scoresList = new Dictionary<string, double>();
+    public static event System.EventHandler OnScoresAdded;
 
     [Space]
     [SerializeField] private TextMeshProUGUI currentScoreText;
-    [SerializeField] private TextMeshProUGUI userBestScoreText;
 
+    private string username;
+    private int userScoreIndex = -1;
     private int currentScore;
     private double userScore;
 
@@ -20,10 +26,10 @@ public class GameController : MonoBehaviour
     {
         instance = this;
 
-        HyplayBridge.LoggedIn += GetUserScore;
+        HyplayBridge.LoggedIn += StartUserScore;
         if (HyplayBridge.IsLoggedIn)
         {
-            GetUserScore();
+            StartUserScore();
         }
     }
 
@@ -36,19 +42,34 @@ public class GameController : MonoBehaviour
     {
         currentScore++;
         currentScoreText.text = "Score " + currentScore.ToString();
-
-        //SubmitScore();
     }
 
-    private async void SubmitScore()
+    private async void StartUserScore()
     {
-        if (leaderboard == null || !CurrentScoreIsGreaterThanUser()) return;
-
-        var res = await leaderboard.PostScore(Mathf.RoundToInt(currentScore));
-        if (res.Success)
+        var scores = await Leaderboard.GetScores(orderBy, 0, numScoresToShow);
+        var res = await HyplayBridge.GetUserAsync();
+        if (scores.Success && res.Success)
         {
-            userBestScoreText.text =  "Best " + res.Data.score.ToString();
+            username = res.Data.Username;
+
+            for (var i = 0; i < scores.Data.scores.Length; i++)
+            {
+                var score = scores.Data.scores[i];
+                if (score.username == res.Data.Username)
+                    userScore = score.score;
+            }
         }
+    }
+
+    public async void SubmitScore()
+    {
+        if (Leaderboard == null) return;
+
+        if (CurrentScoreIsGreaterThanUser())
+        {
+            var res = await Leaderboard.PostScore(Mathf.RoundToInt(currentScore));
+        }
+        AddLeaderboardList();
     }
 
     private bool CurrentScoreIsGreaterThanUser()
@@ -56,21 +77,41 @@ public class GameController : MonoBehaviour
         return currentScore > userScore;
     }
 
-    private async void GetUserScore()
+    public async void AddLeaderboardList()
     {
-        var scores = await leaderboard.GetScores();
+        scoresList.Clear();
+        var scores = await Leaderboard.GetScores(orderBy, 0, numScoresToShow);
+        var res = await HyplayBridge.GetUserAsync();
         if (scores.Success)
         {
-            for (var i = 0; i < scores.Data.scores.Length; i++)
+            for (int i = 0; i < scores.Data.scores.Length; i++)
             {
                 var score = scores.Data.scores[i];
-                var res = await HyplayBridge.GetUserAsync();
-                if (score.username == res.Data.Username && res.Success)
-                {
-                    userScore = score.score;
-                    userBestScoreText.text = "Best " + score.score.ToString();
-                }
+                scoresList.Add(score.username, score.score);
+
+                if(score.username == res.Data.Username)
+                    userScoreIndex = i;
             }
         }
+
+        OnScoresAdded?.Invoke(this, System.EventArgs.Empty);
+    }
+
+    public string GetUsername()
+    {
+        return username;
+    }
+
+    public int GetUserIndex()
+    {
+        return userScoreIndex;
+    }
+
+    public double GetUserScore()
+    {
+        if (currentScore > userScore)
+            return currentScore;
+        else
+            return userScore;
     }
 }
