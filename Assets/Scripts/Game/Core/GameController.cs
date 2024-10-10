@@ -38,9 +38,9 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void AddScore()
+    public void AddScore(int value)
     {
-        currentScore++;
+        currentScore += value;
         currentScoreText.text = "Score " + currentScore.ToString();
     }
 

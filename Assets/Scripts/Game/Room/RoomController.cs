@@ -1,16 +1,16 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Cinemachine;
-using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Tilemaps;
+using System.Collections;
+using Unity.Cinemachine;
+using DG.Tweening;
+using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
     [Header("Start Room")]
     [SerializeField] private bool CanDestroyLastRoom = true;
     [SerializeField] private bool canPuzzle = true;
+    [SerializeField] private bool canScores = true;
 
     [Header("Positions")]
     [SerializeField] private Transform endPoint;
@@ -22,6 +22,11 @@ public class RoomController : MonoBehaviour
     [SerializeField] private Collider2D BarrierCollier;
     [SerializeField] private SpriteMask spriteMask;
     [SerializeField] private GameObject spikeTilemap;
+
+    [Header("Score")]
+    [SerializeField] private ScoreItem scorePrefab;
+    [SerializeField] private Vector2 minMaxScores;
+    [SerializeField] private LayerMask groundLayer;
 
     private List<GameObject> enemiesList = new List<GameObject>();
     private RoomManager roomManager;
@@ -36,7 +41,7 @@ public class RoomController : MonoBehaviour
     [Header("Door")]
     [SerializeField] private DoorController doorController;
     [SerializeField] private KeyDoor keyController;
-    [SerializeField] private LayerMask collidersLayer;
+    [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private PolygonCollider2D roomCollider;
 
     private void Awake()
@@ -50,8 +55,22 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
+        if (canScores)
+            StartScoreItems();
+
         if (canPuzzle)
             StartPuzzle();
+    }
+
+    private void StartScoreItems()
+    {
+        int randCount = (int)Random.Range(minMaxScores.x, minMaxScores.y);
+
+        for (int i = 0; i < randCount; i++)
+        {
+            Vector3 randomPosition = GetRandomClearPositionInRoom(obstacleLayer, groundLayer);
+            Instantiate(scorePrefab, randomPosition, Quaternion.identity, transform);
+        }
     }
 
     private void StartPuzzle()
@@ -62,7 +81,7 @@ public class RoomController : MonoBehaviour
         {
             doorController.SetDoor(false);
 
-            Vector3 randomPosition = GetRandomClearPositionInRoom(collidersLayer);
+            Vector3 randomPosition = GetRandomClearPositionInRoom(obstacleLayer, groundLayer);
             KeyDoor currentKey = Instantiate(keyController, randomPosition, Quaternion.identity, transform);
             currentKey.SetDoorController(doorController);
         }
@@ -83,7 +102,7 @@ public class RoomController : MonoBehaviour
 
             nearPosition = new Vector3(referencePosition.x + offsetX, referencePosition.y + offsetY, referencePosition.z);
 
-            if (roomCollider.OverlapPoint(nearPosition) && !CheckCollision(nearPosition, collidersLayer))
+            if (roomCollider.OverlapPoint(nearPosition) && !CheckCollision(nearPosition, obstacleLayer) && CheckCollision(nearPosition, groundLayer))
             {
                 return SnapToGrid(nearPosition);
             }
@@ -91,7 +110,7 @@ public class RoomController : MonoBehaviour
         return SnapToGrid(referencePosition);
     }
 
-    private Vector3 GetRandomClearPositionInRoom(LayerMask layer)
+    private Vector3 GetRandomClearPositionInRoom(LayerMask obstacleLayer, LayerMask groundLayer)
     {
         Bounds bounds = roomCollider.bounds;
 
@@ -101,7 +120,7 @@ public class RoomController : MonoBehaviour
             float randomY = Random.Range(bounds.min.y, bounds.max.y);
             Vector3 randomPosition = SnapToGrid(new Vector3(randomX, randomY, 0));
 
-            if (roomCollider.OverlapPoint(randomPosition) && !CheckCollision(randomPosition, layer))
+            if (roomCollider.OverlapPoint(randomPosition) && !CheckCollision(randomPosition, obstacleLayer) && CheckCollision(randomPosition, groundLayer))
             {
                 return randomPosition;
             }

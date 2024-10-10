@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2597747949460000223
 Transform:
   m_ObjectHideFlags: 0
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanDestroyLastRoom: 1
   canPuzzle: 1
+  canScores: 1
   endPoint: {fileID: 4474631916376190546}
   centerPosition: {fileID: 1683749000808746384}
   bossPosition: {fileID: 5013316966415756647}
@@ -405,6 +406,11 @@ MonoBehaviour:
   BarrierCollier: {fileID: 2662939618226090995}
   spriteMask: {fileID: 7065195064977005695}
   spikeTilemap: {fileID: 1968762012174075985}
+  scorePrefab: {fileID: 7982983306124812958, guid: f75b859fd5ca4364fa7a3b59238701ed, type: 3}
+  minMaxScores: {x: 1, y: 10}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   moveDOT: {fileID: 2697976754040967967}
   tilemaps:
   - {fileID: 7823851320293957199}
@@ -414,7 +420,7 @@ MonoBehaviour:
   dissolveSpeed: 0.8
   doorController: {fileID: 3527577581394035642}
   keyController: {fileID: 4115543139920225115, guid: a7a5376981c65cf42916693547b29372, type: 3}
-  collidersLayer:
+  obstacleLayer:
     serializedVersion: 2
     m_Bits: 11712
   roomCollider: {fileID: 4132203880110454560}
@@ -5909,7 +5915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2040030393904467607
 Transform:
   m_ObjectHideFlags: 0
@@ -6427,7 +6433,8 @@ GameObject:
   - component: {fileID: 378203970095692573}
   - component: {fileID: 2311888229166073277}
   - component: {fileID: 840606228808422994}
-  m_Layer: 0
+  - component: {fileID: 5893711752857521118}
+  m_Layer: 14
   m_Name: Ground_Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10287,6 +10294,44 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 1
+--- !u!19719996 &5893711752857521118
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298184393399675923}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &6593672889909910303
 GameObject:
   m_ObjectHideFlags: 0
@@ -10413,7 +10458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2213137174780921746
 Transform:
   m_ObjectHideFlags: 0
@@ -12927,7 +12972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9145580025995496147
 Transform:
   m_ObjectHideFlags: 0

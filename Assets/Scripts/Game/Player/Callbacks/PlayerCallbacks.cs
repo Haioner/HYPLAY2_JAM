@@ -1,9 +1,8 @@
-using DG.Tweening;
 using MoreMountains.Feedbacks;
 using System.Collections;
-using TMPro;
-using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
+using UnityEngine;
 
 public class PlayerCallbacks : MonoBehaviour
 {
@@ -21,6 +20,9 @@ public class PlayerCallbacks : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     private bool isDead;
     private float currentPitch = 1;
+
+    [Header("Score")]
+    [SerializeField] private MMF_Player scoreFeedbacks;
 
     private void OnEnable()
     {
@@ -46,6 +48,11 @@ public class PlayerCallbacks : MonoBehaviour
             targetPosition.z = -10;
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, 4 * Time.deltaTime);
         }
+    }
+
+    public void ScoreFeedback()
+    {
+        scoreFeedbacks.PlayFeedbacks();
     }
 
     private void DeathCallback(object sender, System.EventArgs e)

@@ -69,7 +69,6 @@ public class RoomManager : MonoBehaviour
 
     private void AddRoomCount()
     {
-        GameController.instance.AddScore();
         currentRoom++;
         if (currentRoom % 3 == 0)
             AddMinMaxSpawn();
