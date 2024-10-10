@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
+using UnityEngine.UI;
 
 public class EndGame : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class EndGame : MonoBehaviour
     [SerializeField] private HighscoreITEM scoreItemPrefab;
     [SerializeField] private Transform scoresHolder;
     [SerializeField] private TextMeshProUGUI playerScoreText;
+
+    [Header("UI")]
+    [SerializeField] private MMF_Player endFeedback;
+    [SerializeField] private GameObject autoRestartButton;
     
     private static bool canAutoRestart;
     private CanvasGroup cg;
@@ -25,12 +31,12 @@ public class EndGame : MonoBehaviour
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
+        autoRestartButton.SetActive(canAutoRestart);
     }
 
-    private void Update()
+    public void DisableAutoRestart()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            canAutoRestart = false;
+        canAutoRestart = false;
     }
 
     public void ActiveEndGame()
@@ -47,12 +53,14 @@ public class EndGame : MonoBehaviour
         cg.alpha = 1;
         cg.blocksRaycasts = true;
         cg.interactable = true;
+
+        endFeedback.PlayFeedbacks();
     }
 
     private void LeaderBoard()
     {
         GameController.instance.SubmitScore();
-        playerScoreText.text = GameController.instance.GetUsername() + " : " + GameController.instance.GetUserScore().ToString();
+        playerScoreText.text = "Best " + GameController.instance.GetUsername() + " " + GameController.instance.GetUserScore().ToString();
     }
 
     private void SpawnScores(object sender, System.EventArgs e)
@@ -83,6 +91,7 @@ public class EndGame : MonoBehaviour
     public void SetAutoRestart(bool toggleValue)
     {
         canAutoRestart = toggleValue;
+        autoRestartButton.SetActive(toggleValue);
     }
 
     public void RestartScene()
