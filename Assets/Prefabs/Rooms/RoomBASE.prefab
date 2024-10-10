@@ -1025,6 +1025,7 @@ MonoBehaviour:
   spikeActiveDuration: 2
   damageAmount: 10
   spikeParticle: {fileID: 659345846074312622, guid: 4b6bba7f3e07afc4e92502957617d285, type: 3}
+  spikeClip: {fileID: 8300000, guid: 49afa7aacf7980644a85bc26a8600311, type: 3}
 --- !u!1 &2292938950999531217
 GameObject:
   m_ObjectHideFlags: 0

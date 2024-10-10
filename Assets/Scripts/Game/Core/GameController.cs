@@ -27,6 +27,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void AddScore()
     {
         currentScore++;

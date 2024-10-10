@@ -390,6 +390,7 @@ MonoBehaviour:
   meeleAttack: {fileID: 8489679479666267598}
   healthController: {fileID: 4976256485984228700}
   deathParticle: {fileID: 1234887472379170032, guid: 6cc19ce6d5538ec4eae83ec91aa2132a, type: 3}
+  deathClip: {fileID: 8300000, guid: fd283d4801a675c4399936b43bb49326, type: 3}
 --- !u!114 &4976256485984228700
 MonoBehaviour:
   m_ObjectHideFlags: 0

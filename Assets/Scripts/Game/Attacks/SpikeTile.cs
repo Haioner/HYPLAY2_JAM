@@ -13,6 +13,7 @@ public class SpikeTile : MonoBehaviour
     [SerializeField] private int damageAmount = 1;
     [SerializeField] private ParticleSystem spikeParticle;
     private HashSet<Vector3Int> activatedTiles = new HashSet<Vector3Int>();
+    [SerializeField] private AudioClip spikeClip;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -29,6 +30,8 @@ public class SpikeTile : MonoBehaviour
                 //Add
                 activatedTiles.Add(tilePosition);
                 StartCoroutine(ActivateSpike(tilePosition, collision.gameObject));
+
+                SoundManager.PlayAudioClip(spikeClip);
             }
             
             if (tilemap.GetTile(tilePosition) == spikeActivatedTile)

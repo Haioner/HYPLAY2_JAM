@@ -4,6 +4,7 @@ public class KeyDoor : MonoBehaviour
 {
     [SerializeField] private DoorController doorController;
     [SerializeField] private ParticleSystem pickupParticle;
+    [SerializeField] private AudioClip keyClip;
     private bool hasTriggered;
 
     public void SetDoorController(DoorController controller)
@@ -15,6 +16,7 @@ public class KeyDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !hasTriggered)
         {
+            SoundManager.PlayAudioClip(keyClip);
             hasTriggered = true;
             doorController.SetDoorOpenForever();
             Instantiate(pickupParticle, transform.position, Quaternion.identity);

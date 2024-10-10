@@ -16,6 +16,7 @@ public class EnemyCallbacks : MonoBehaviour
     [Header("Death")]
     [SerializeField] private HealthController healthController;
     [SerializeField] private ParticleSystem deathParticle;
+    [SerializeField] private AudioClip deathClip;
 
     private void OnEnable()
     {
@@ -36,6 +37,7 @@ public class EnemyCallbacks : MonoBehaviour
 
     private void DeathCallback(object sender, System.EventArgs e)
     {
+        SoundManager.PlayAudioClip(deathClip);
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }

@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorController: {fileID: 0}
   pickupParticle: {fileID: 6674837234580098633, guid: 50c3ff2bc4c816d43a329590db4a829c, type: 3}
+  keyClip: {fileID: 8300000, guid: b1ce730727a9cdc4e8bd5607edf05dd3, type: 3}
 --- !u!61 &8330477371464270025
 BoxCollider2D:
   m_ObjectHideFlags: 0

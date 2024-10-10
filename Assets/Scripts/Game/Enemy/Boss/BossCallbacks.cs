@@ -8,6 +8,7 @@ public class BossCallbacks : MonoBehaviour
     [SerializeField] private Transform rightHand, leftHand;
     [SerializeField] private GameObject[] orbitalVFX;
     [SerializeField] private MMF_Player explodeFEEDBACK;
+    [SerializeField] private MMF_Player enemyFEEDBACK;
 
     private BossMovement bossMovement;
     private BossController bossController;
@@ -42,12 +43,9 @@ public class BossCallbacks : MonoBehaviour
     {
         anim.SetBool("Path", bossController.isPath);
 
-        bool canEnableOrbital = anim.GetCurrentAnimatorStateInfo(0).IsName("Path");
-        if (canEnableOrbital)
-        {
-            foreach (var item in orbitalVFX)
-                item.SetActive(bossController.isPath);
-        }
+        bool canOrbital = bossController.isPath && !bossMovement.IsMoving;
+        foreach (var item in orbitalVFX)
+            item.SetActive(canOrbital);
     }
 
     private void SpawnExplode(object sender, System.EventArgs e)
@@ -70,6 +68,7 @@ public class BossCallbacks : MonoBehaviour
 
     public void SpawnEnemyParticle_EVENT()
     {
+        enemyFEEDBACK.PlayFeedbacks();
         FindFirstObjectByType<CinemachineShake>().ShakeCamera();
         Instantiate(handEnemyParticle, rightHand.position, Quaternion.identity, rightHand);
     }
