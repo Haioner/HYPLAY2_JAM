@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using HYPLAY.Core.Runtime;
 using UnityEngine;
 using TMPro;
+using Pathfinding;
 
 public class GameController : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameController : MonoBehaviour
 
     [Space]
     [SerializeField] private TextMeshProUGUI currentScoreText;
+
+    [Header("Grid")]
+    [SerializeField] private ProceduralGridMover proceduralGridMover;
 
     private string username;
     private int userScoreIndex = -1;
@@ -42,6 +46,11 @@ public class GameController : MonoBehaviour
     {
         currentScore += value;
         currentScoreText.text = "Score " + currentScore.ToString();
+    }
+
+    public void UpdateProceduralGrid()
+    {
+        proceduralGridMover.UpdateGraph();
     }
 
     private async void StartUserScore()
