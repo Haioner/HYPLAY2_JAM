@@ -4502,11 +4502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: minMaxScores.x
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: minMaxScores.y
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4474631916376190546, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_LocalPosition.y

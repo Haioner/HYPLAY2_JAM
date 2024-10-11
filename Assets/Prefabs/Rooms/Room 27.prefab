@@ -3218,11 +3218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: minMaxScores.x
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: minMaxScores.y
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.size
