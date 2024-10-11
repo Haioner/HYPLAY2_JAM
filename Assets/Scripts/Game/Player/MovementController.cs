@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,7 @@ public class MovementController : MonoBehaviour
     private Vector2 currentDirection = Vector2.zero;
     private Vector2 inputDirection = Vector2.zero;
     private bool isMoving = false;
+    private bool isForceMoving = false;
     private Rigidbody2D rb;
     private Vector2 targetPosition;
     private float moveCooldown = 0f;
@@ -45,8 +47,11 @@ public class MovementController : MonoBehaviour
         else
         {
             FlipSprite();
-            Move();
+            Move(inputDirection);
         }
+
+        if (isForceMoving && !isMoving)
+            TryMoveToNextCell(currentDirection);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -58,7 +63,7 @@ public class MovementController : MonoBehaviour
             startedInput = rawInput;
         }
 
-        if(startedInput.x != 0)
+        if (startedInput.x != 0)
         {
             if (Mathf.Abs(rawInput.x) > Mathf.Abs(rawInput.y))
                 inputDirection = new Vector2(Mathf.Sign(rawInput.x), 0); // Esquerda/Direita
@@ -69,7 +74,7 @@ public class MovementController : MonoBehaviour
                 startedInput = rawInput;
         }
 
-        if(startedInput.y != 0)
+        if (startedInput.y != 0)
         {
             if (Mathf.Abs(rawInput.x) < Mathf.Abs(rawInput.y))
                 inputDirection = new Vector2(0, Mathf.Sign(rawInput.y)); // Cima/Baixo
@@ -79,7 +84,6 @@ public class MovementController : MonoBehaviour
             if (rawInput.x != 0 && rawInput.y == 0)
                 startedInput = rawInput;
         }
-
 
         if (context.canceled)
         {
@@ -92,7 +96,12 @@ public class MovementController : MonoBehaviour
         return inputDirection;
     }
 
-    private void Move()
+    public bool GetIsMoving()
+    {
+        return isMoving;
+    }
+
+    private void Move(Vector2 _inputDirection)
     {
         if (isMoving)
         {
@@ -105,31 +114,50 @@ public class MovementController : MonoBehaviour
                 rb.position = targetPosition;
                 isMoving = false;
 
-                if (inputDirection != Vector2.zero)
+                if (_inputDirection != Vector2.zero)
                 {
-                    TryMoveToNextCell();
+                    TryMoveToNextCell(_inputDirection);
                 }
             }
         }
-
-        else if (inputDirection != Vector2.zero && moveCooldown <= 0)
+        else if (_inputDirection != Vector2.zero)
         {
-            TryMoveToNextCell();
+            TryMoveToNextCell(_inputDirection);
         }
     }
 
-    private void TryMoveToNextCell()
+    public void ForceMove()
     {
-        Vector2 nextPosition = rb.position + inputDirection;
+        isForceMoving = true;
 
-        if (!CheckCollisionInDirection(inputDirection))
+        if (!isMoving)
+            TryMoveToNextCell(currentDirection);
+    }
+
+    public void StopForceMove()
+    {
+        isForceMoving = false;
+        targetPosition = new Vector2(
+            Mathf.Floor(rb.position.x) + 0.5f,
+            Mathf.Floor(rb.position.y) + 0.5f
+        );
+        rb.position = targetPosition;
+        isMoving = false;
+        OnEndMove?.Invoke(this, System.EventArgs.Empty); 
+    }
+
+    private void TryMoveToNextCell(Vector2 _inputDirection)
+    {
+        Vector2 nextPosition = rb.position + _inputDirection;
+
+        if (!CheckCollisionInDirection(_inputDirection))
         {
             if (!isMoving)
                 OnStartMove?.Invoke(this, System.EventArgs.Empty);
 
             targetPosition = nextPosition;
             isMoving = true;
-            currentDirection = inputDirection;
+            currentDirection = _inputDirection;
 
             moveCooldown = moveDelay;
         }
