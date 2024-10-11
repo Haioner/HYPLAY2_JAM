@@ -1,11 +1,8 @@
 using UnityEngine.Tilemaps;
 using UnityEngine;
-using System.Collections;
 
 public class DestructibleLava : MonoBehaviour
 {
-    [SerializeField] private Transform roomTarget;
-    [SerializeField] private RoomController roomController;
     [SerializeField] private Tilemap destructibleTilemap;
     [SerializeField] private Tilemap lavaTilemap;
     [SerializeField] private string explosionLayer = "Attack";
@@ -13,11 +10,6 @@ public class DestructibleLava : MonoBehaviour
     [SerializeField] private TileBase lavaTile; // Tile de lava
     [SerializeField, Range(0f, 1f)] private float lavaSpawnChance = 0.3f;
     private Vector3 initialPos;
-
-    private void Start()
-    {
-        initialPos = roomTarget.localPosition;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
