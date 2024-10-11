@@ -7487,7 +7487,7 @@ PrefabInstance:
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[20].m_Data
       value: 
-      objectReference: {fileID: -1999776886, guid: 96cfd26b8a62ee14ca4a5e05a27470fc, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[21].m_Data
       value: 
@@ -7515,7 +7515,7 @@ PrefabInstance:
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[27].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -1999776886, guid: 96cfd26b8a62ee14ca4a5e05a27470fc, type: 3}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[28].m_Data
       value: 
@@ -8862,7 +8862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[20].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[21].m_RefCount
@@ -8890,7 +8890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[27].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[28].m_RefCount
@@ -10702,7 +10702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[146].second.m_TileSpriteIndex
-      value: 20
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[147].second.m_TileSpriteIndex
@@ -17261,22 +17261,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8118090364249361395}
   m_SourcePrefab: {fileID: 100100000, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
---- !u!4 &394267811007929381 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1683749000808746384, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
-  m_PrefabInstance: {fileID: 1307548812664918453}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3445912102328467239 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4465053478814854802, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
-  m_PrefabInstance: {fileID: 1307548812664918453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e718a0d3111a30844a4ec4307d7df047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1839735485 &4820341509924477125 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 5818672329940404592, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
@@ -17299,12 +17283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2469823cf0afea64e989ac1c2d01ab96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomTarget: {fileID: 394267811007929381}
-  roomController: {fileID: 3445912102328467239}
   destructibleTilemap: {fileID: 4820341509924477125}
   lavaTilemap: {fileID: 6562529503993187357}
   explosionLayer: Attack
-  destructiveParticle: {fileID: 5233874994703765234, guid: 0bcdab33c85ad0248b54b788a40f7cb8, type: 3}
+  destructiveParticle: {fileID: 5233874994703765234, guid: b3931f6c7bbb6a240a2cf5d756f02294, type: 3}
   lavaTile: {fileID: 11400000, guid: 5e8c7a2914584e9448b1beb0e4d38372, type: 2}
   lavaSpawnChance: 0.5
 --- !u!1839735485 &6562529503993187357 stripped

@@ -16,13 +16,14 @@ public class PlayerCallbacks : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private float pitchDecreaseSpeed = 2f;
     [SerializeField] private HealthController healthController;
-    [SerializeField] private MMF_Player deathFeedbacks;
     [SerializeField] private Camera mainCamera;
     private bool isDead;
     private float currentPitch = 1;
 
-    [Header("Score")]
+    [Header("Feedbacks")]
+    [SerializeField] private MMF_Player deathFeedbacks;
     [SerializeField] private MMF_Player scoreFeedbacks;
+    [SerializeField] private MMF_Player keyFeedbacks;
 
     private void OnEnable()
     {
@@ -53,6 +54,11 @@ public class PlayerCallbacks : MonoBehaviour
     public void ScoreFeedback()
     {
         scoreFeedbacks.PlayFeedbacks();
+    }
+
+    public void KeyFeedback()
+    {
+        keyFeedbacks.PlayFeedbacks();
     }
 
     private void DeathCallback(object sender, System.EventArgs e)

@@ -16,6 +16,7 @@ public class KeyDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !hasTriggered)
         {
+            FindFirstObjectByType<PlayerCallbacks>().KeyFeedback();
             SoundManager.PlayAudioClip(keyClip);
             hasTriggered = true;
             doorController.SetDoorOpenForever();

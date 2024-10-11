@@ -29,6 +29,7 @@ public class HealthController : MonoBehaviour, IDamage
         if(currentHealth <= 0)
         {
             OnDeath?.Invoke(this, System.EventArgs.Empty);
+            OnDeath = null;
             currentHealth = 0;
         }
     }

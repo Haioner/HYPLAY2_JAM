@@ -6,6 +6,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float damage = 1f;
     [SerializeField] private float attackDelay = 1f;
 
+    [SerializeField] private ParticleSystem posExplosionParticle;
     [Space][SerializeField] private UnityEvent onAttackStart;
 
     private float delayTimer;
@@ -29,6 +30,7 @@ public class Explosion : MonoBehaviour
 
     private void AttackStart()
     {
+        Instantiate(posExplosionParticle, transform.position, Quaternion.identity);
         canDamage = true;
         attackParticle.Play();
         onAttackStart?.Invoke();
