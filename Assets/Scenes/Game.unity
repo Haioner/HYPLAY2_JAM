@@ -6550,7 +6550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 75.899994}
+  m_AnchoredPosition: {x: 0, y: 75.89844}
   m_SizeDelta: {x: 571.67, y: 56.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &256788809
@@ -11260,7 +11260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 31.200073}
+  m_AnchoredPosition: {x: 0, y: 31.199219}
   m_SizeDelta: {x: 199.28, y: 46.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843920781
@@ -11480,7 +11480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 251.38501, y: 180}
+  m_AnchoredPosition: {x: 251.38281, y: 180}
   m_SizeDelta: {x: 502.77002, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &945054266
@@ -24081,14 +24081,25 @@ MonoBehaviour:
   roomsList:
   - {fileID: 3445912102328467239, guid: 185c11268626e204887ff938e488862d, type: 3}
   - {fileID: 3445912102328467239, guid: 257edba7e976c944fb386fdb29783825, type: 3}
-  - {fileID: 3445912102328467239, guid: 257edba7e976c944fb386fdb29783825, type: 3}
   - {fileID: 3445912102328467239, guid: 804b9418df8b74a45a7fe00ca5df389c, type: 3}
   - {fileID: 3445912102328467239, guid: f3032cf3fecba2447870b012682db4e0, type: 3}
   - {fileID: 3445912102328467239, guid: daa02114c908fec4c982d86a7c050b5b, type: 3}
   - {fileID: 3445912102328467239, guid: 274afd0516c9b2b42b86c34a6bbb8589, type: 3}
   - {fileID: 3445912102328467239, guid: 9c62055f86ce97c4781c78f728885e46, type: 3}
+  - {fileID: 3445912102328467239, guid: 85950da0d6275e34988132e432eaa0e0, type: 3}
+  - {fileID: 3445912102328467239, guid: 77d797c263551e240a393b7395faf72c, type: 3}
+  - {fileID: 3445912102328467239, guid: 4d0de944346bf454c87ab5dfe41754f7, type: 3}
   - {fileID: 3445912102328467239, guid: e8849a6fec280c94799b4e50559cd799, type: 3}
-  minMaxSpawnRange: {x: 0, y: 5}
+  - {fileID: 3445912102328467239, guid: 28df1d03c84fb29418396676a5f0e8fc, type: 3}
+  - {fileID: 3445912102328467239, guid: 15165e0894249dd4e86f0982f473c033, type: 3}
+  - {fileID: 3445912102328467239, guid: 8f1aefcc7f170d547a52d5ed64f0f516, type: 3}
+  - {fileID: 3445912102328467239, guid: f763c1f6f7c0cba47a9ccb554459302a, type: 3}
+  - {fileID: 3445912102328467239, guid: 41179d27f3e34d546b1578b87002ac51, type: 3}
+  - {fileID: 3445912102328467239, guid: 53e134b51cea4f746859cbcde9b5a783, type: 3}
+  - {fileID: 3445912102328467239, guid: 28708a7c7b7fcc747a7b06ac0a6b1f9d, type: 3}
+  - {fileID: 3445912102328467239, guid: ef712bc491f33c64aacf000bdd890b6e, type: 3}
+  - {fileID: 3445912102328467239, guid: e5794993735a73a42b079ed5a93f4fb2, type: 3}
+  minMaxSpawnRange: {x: 0, y: 8}
   currentRooms:
   - {fileID: 1058807123}
   proceduralGrid: {fileID: 1554029960}
@@ -26124,7 +26135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -109, y: 31.199951}
+  m_AnchoredPosition: {x: -109, y: 31.199219}
   m_SizeDelta: {x: 200, y: 46.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851923246
@@ -26339,7 +26350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 251.38501, y: 65}
+  m_AnchoredPosition: {x: 251.38281, y: 65}
   m_SizeDelta: {x: 502.77002, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1855017954

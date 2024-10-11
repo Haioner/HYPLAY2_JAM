@@ -70,8 +70,8 @@ public class RoomManager : MonoBehaviour
     private void AddRoomCount()
     {
         currentRoom++;
-        if (currentRoom % 3 == 0)
-            AddMinMaxSpawn();
+        //if (currentRoom % 3 == 0)
+        AddMinMaxSpawn();
     }
 
     private void AddMinMaxSpawn()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7982983306124812958}
   - component: {fileID: 8198033672678504277}
   - component: {fileID: 6304638154362098086}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 1064383581035358443}
   - component: {fileID: 7820132183239332563}
   - component: {fileID: 823446904209133742}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TinyParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4967,7 +4967,7 @@ GameObject:
   - component: {fileID: 3599503121262363568}
   - component: {fileID: 4102773172618831654}
   - component: {fileID: 109486399717022944}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5165,7 +5165,7 @@ GameObject:
   - component: {fileID: 2718055617321440212}
   - component: {fileID: 3526420461960352255}
   - component: {fileID: 1533396105959353197}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: RadialParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
