@@ -8273,7 +8273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebda55c28bb7544a9c02c6bc8f1a932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Leaderboard: {fileID: 11400000, guid: 9e88cba049d23244697f6557d374edf5, type: 2}
+  Leaderboard: {fileID: 11400000, guid: 6da967e527088a249b60636e2e405fbc, type: 2}
   orderBy: 0
   numScoresToShow: 13
   currentScoreText: {fileID: 843920777}
@@ -12602,7 +12602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 251.38281, y: 180}
+  m_AnchoredPosition: {x: 251.38281, y: 180.00002}
   m_SizeDelta: {x: 502.77002, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &945054266
@@ -27707,7 +27707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 251.38281, y: 65}
+  m_AnchoredPosition: {x: 251.38281, y: 65.000015}
   m_SizeDelta: {x: 502.77002, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1855017954

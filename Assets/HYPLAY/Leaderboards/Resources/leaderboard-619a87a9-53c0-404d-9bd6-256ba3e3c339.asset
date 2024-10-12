@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5430e3f481ef42cf94d3577880d201f2, type: 3}
-  m_Name: leaderboard-36a0d1c4-8082-417b-8b33-f66e30e82552
+  m_Name: leaderboard-619a87a9-53c0-404d-9bd6-256ba3e3c339
   m_EditorClassIdentifier: 
-  id: 36a0d1c4-8082-417b-8b33-f66e30e82552
+  id: 619a87a9-53c0-404d-9bd6-256ba3e3c339
   name: GameLeaderboard
-  description: Leaderboard Description
-  secretKey: leaderboard_dRHpiZ-9yYkUYwfUjOPGbNL-i9iwYZJT3OWLSC75zGkkpcXyMcLeBcIFad8YewCH
+  description: Weaker of All Leaderboard
+  secretKey: leaderboard_j_dpltBUKwHxdWvbPysK7QlvvFxPQEb096rpOUsg7cDoAGKa2hIbxflkUUIS6PxF

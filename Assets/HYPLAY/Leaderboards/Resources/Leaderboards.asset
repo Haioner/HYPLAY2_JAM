@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Leaderboards
   m_EditorClassIdentifier: 
   leaderboards:
-  - {fileID: 11400000, guid: 9e88cba049d23244697f6557d374edf5, type: 2}
+  - {fileID: 11400000, guid: 6da967e527088a249b60636e2e405fbc, type: 2}

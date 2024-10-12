@@ -13,25 +13,24 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   accessToken: user_at_gobbbL0KSSoZ7oRj3rjSkv8zm3yGVhuyWToz9oSgPupwX668ChMc1hIusvosdcav
-  appName: 
-  appDescription: 
-  appUrl: 
+  appName: Weaker Of All Game
+  appDescription: Game made for HYPLAY Jam 2
+  appUrl: https://haioner.itch.io/weakerofall
   timeoutHours: 24
   usePopup: 1
   currentApp:
-    id: d8471ca8-ad85-439a-867a-0314156eced2
-    secretKey: app_sk_5zL37elg_cdaI5mgN8ldIKAUmeHcDzCPCac_0I3qCj174MNO_eRQ-CXnQWvKLFGi
-    name: Weaker of All
-    description: Hyplay.2 - 2024 - Gamejam
+    id: ec6c6c24-ea4c-420b-900b-ac7b7ab4ddfd
+    secretKey: app_sk_LdV2hWxkv3T0exG_N8jdVOohSkxNvLq1In0xSmodi8ZO2sqmuIaE81vXxZqMdbnW
+    name: Weaker Of All Game
+    description: Game made for HYPLAY Jam 2
     redirectUris:
-    - https://haioner.itch.io/weakerofall
-    - myapp://token
-    - http://localhost
+    - https://haioner.itch.io/weakerofall/
     - https://html-classic.itch.zone/html/
+    - http://localhost
     url: https://haioner.itch.io/weakerofall
     iconImageAsset:
-      id: 57057c63-98c1-4a3c-bc24-b7394ef975bf
-      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/6b30661628b475fc2ad3717f6744c8bd-1727843323522.png
+      id: be8843a3-cf1c-43f1-9555-6a1426edb0e9
+      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/cacb93244fffdf16649287857a43b9fb-1728723346564.png
     backgroundImageAsset:
-      id: d2e56ffd-04a4-440c-9ab3-e826c82e6586
-      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/d9cce148aa4b337090756bbca73bea0c-1727843323796.png
+      id: 3534f3ed-e020-49bb-b3e1-a577c50c48b2
+      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/905762eb1492361a5d2c37ba520cbcb1-1728723518949.png

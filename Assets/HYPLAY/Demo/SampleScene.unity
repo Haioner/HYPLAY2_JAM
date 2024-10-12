@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2472,7 +2473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defbf4b5bee24e1f886a4488b0ff7599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboard: {fileID: 11400000, guid: 9e88cba049d23244697f6557d374edf5, type: 2}
+  leaderboard: {fileID: 11400000, guid: 7c2c8f9e4acb94e65abcfc54d096119f, type: 2}
   multiplier: 5
   numScoresToShow: 5
   orderBy: 0

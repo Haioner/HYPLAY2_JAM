@@ -1,8 +1,9 @@
-using HYPLAY.Leaderboards.Runtime;
-using UnityEngine.EventSystems;
+using System.Collections;
 using HYPLAY.Core.Runtime;
-using UnityEngine;
+using HYPLAY.Leaderboards.Runtime;
 using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace HYPLAY.Demo
 {
