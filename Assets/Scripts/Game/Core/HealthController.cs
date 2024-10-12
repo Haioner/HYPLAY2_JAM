@@ -6,6 +6,7 @@ public class HealthController : MonoBehaviour, IDamage
     private float currentHealth;
 
     public event System.EventHandler OnDeath;
+    public event System.EventHandler OnDamage;
 
     private void Awake()
     {
@@ -18,8 +19,14 @@ public class HealthController : MonoBehaviour, IDamage
         currentHealth = maxHealth;
     }
 
+    public void AddHealth(float addValue)
+    {
+        currentHealth += addValue;
+    }
+
     public void Damage(float damageValue)
     {
+        OnDamage?.Invoke(this, System.EventArgs.Empty);
         currentHealth -= damageValue;
         Death();
     }

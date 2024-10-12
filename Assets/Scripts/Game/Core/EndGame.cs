@@ -62,7 +62,7 @@ public class EndGame : MonoBehaviour
     private void LeaderBoard()
     {
         GameController.instance.SubmitScore();
-        playerScoreText.text = "Best " + GameController.instance.GetUsername() + " " + GameController.instance.GetUserScore().ToString();
+        playerScoreText.text = GameController.instance.GetUsername() + " Best score " + GameController.instance.GetUserScore().ToString();
     }
 
     private void SpawnScores(object sender, System.EventArgs e)

@@ -20,6 +20,7 @@ public class ScoreItem : MonoBehaviour
             Instantiate(scoreParticle, transform.position, Quaternion.identity);
             SoundManager.PlayAudioClip(scoreClip);
             GameController.instance.AddScore(scoreValue);
+            FindFirstObjectByType<PlayerController>().AddShield(scoreValue);
             Destroy(gameObject);
         }
     }

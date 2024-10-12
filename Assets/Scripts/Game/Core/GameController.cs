@@ -144,4 +144,9 @@ public class GameController : MonoBehaviour
         else
             return userScore;
     }
+
+    public double GetCurrentScore()
+    {
+        return currentScore;
+    }
 }
