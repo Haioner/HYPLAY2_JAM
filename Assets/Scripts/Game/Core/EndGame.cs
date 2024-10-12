@@ -13,6 +13,8 @@ public class EndGame : MonoBehaviour
     [Header("UI")]
     [SerializeField] private MMF_Player endFeedback;
     [SerializeField] private GameObject autoRestartButton;
+    [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI roomCountText;
     
     private static bool canAutoRestart;
     private CanvasGroup cg;
@@ -54,6 +56,7 @@ public class EndGame : MonoBehaviour
         cg.interactable = true;
 
         endFeedback.PlayFeedbacks();
+        UpdateTexts();
     }
 
     private void LeaderBoard()
@@ -85,6 +88,12 @@ public class EndGame : MonoBehaviour
 
             iterator++;
         }
+    }
+
+    private void UpdateTexts()
+    {
+        timeText.text = "<color=#92E8C0>Time Played</color> <bounce>" + GameController.instance.GetTime();
+        roomCountText.text = "<color=#92E8C0>Rooms</color> <bounce>" + FindFirstObjectByType<RoomManager>().GetCurrentRoom().ToString();
     }
 
     public void SetAutoRestart(bool toggleValue)

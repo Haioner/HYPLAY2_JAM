@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     private int userScoreIndex = -1;
     private int currentScore;
     private double userScore;
+    private float timePlayed;
 
     private void Awake()
     {
@@ -40,6 +41,26 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
+    }
+
+    private void Update()
+    {
+        timePlayed += Time.deltaTime;
+    }
+
+    public string GetTime()
+    {
+        int totalSeconds = Mathf.FloorToInt(timePlayed);
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+
+        if (hours > 0)
+            return $"{hours}hr {minutes}m {seconds}s";
+        else if (minutes > 0)
+            return $"{minutes}m {seconds}s";
+        else
+            return $"{seconds}s";
     }
 
     public void AddScore(int value)

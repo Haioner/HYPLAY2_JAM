@@ -20,6 +20,11 @@ public class RoomManager : MonoBehaviour
 
     private Queue<RoomController> lastRoomsQueue = new Queue<RoomController>();
 
+    public int GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
     public void SpawnNewRoom(Vector3 endPosition)
     {
         AddRoomCount();
