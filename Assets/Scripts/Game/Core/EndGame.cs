@@ -1,8 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
-using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 public class EndGame : MonoBehaviour
 {
