@@ -21,7 +21,7 @@ MonoBehaviour:
   currentApp:
     id: ec6c6c24-ea4c-420b-900b-ac7b7ab4ddfd
     secretKey: app_sk_LdV2hWxkv3T0exG_N8jdVOohSkxNvLq1In0xSmodi8ZO2sqmuIaE81vXxZqMdbnW
-    name: Weaker Of All Game
+    name: Weaker Of All
     description: Game made for HYPLAY Jam 2
     redirectUris:
     - https://haioner.itch.io/weakerofall/
@@ -32,5 +32,5 @@ MonoBehaviour:
       id: be8843a3-cf1c-43f1-9555-6a1426edb0e9
       cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/cacb93244fffdf16649287857a43b9fb-1728723346564.png
     backgroundImageAsset:
-      id: 3534f3ed-e020-49bb-b3e1-a577c50c48b2
-      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/905762eb1492361a5d2c37ba520cbcb1-1728723518949.png
+      id: 14a0f025-a056-46e1-81de-010bbb860ca1
+      cdnUrl: https://assets.hyplay.com/f16bbe1f-4ac2-45e7-8242-bdf8f1a1bec4/f15fb4c88e36824f878f9863bc4d3885-1728771895967.png

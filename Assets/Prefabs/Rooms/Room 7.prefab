@@ -6779,7 +6779,7 @@ PrefabInstance:
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[24].m_Data
       value: 
-      objectReference: {fileID: 429752506, guid: 6e7ec7ea55811c6469de93a545ccfc9c, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[25].m_Data
       value: 
@@ -6823,7 +6823,7 @@ PrefabInstance:
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[35].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 429752506, guid: 6e7ec7ea55811c6469de93a545ccfc9c, type: 3}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[38].m_Data
       value: 
@@ -6906,7 +6906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[24].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[25].m_RefCount
@@ -6950,7 +6950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[35].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[36].m_RefCount
@@ -7142,7 +7142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[42].second.m_TileSpriteIndex
-      value: 24
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8073056139073835020, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_Tiles.Array.data[43].second.m_TileSpriteIndex
