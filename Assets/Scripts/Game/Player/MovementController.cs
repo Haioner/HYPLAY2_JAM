@@ -93,7 +93,10 @@ public class MovementController : MonoBehaviour
 
     public Vector2 GetInputDirection()
     {
-        return inputDirection;
+        if (isForceMoving)
+            return currentDirection;
+        else
+            return inputDirection;
     }
 
     public bool GetIsMoving()

@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceTile
       objectReference: {fileID: 0}
+    - target: {fileID: 1968762012174075985, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1982857568007717818, guid: cd95aae0c3d398741ab94278bd9bf4f1, type: 3}
       propertyPath: m_IsActive
       value: 0
