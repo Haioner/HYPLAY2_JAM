@@ -4913,7 +4913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1249214149fa2e4d9f5b29a40840f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionsInput: 0
+  optionsInput: 27
   gamePausedDOT: {fileID: 2236159688090018026}
   audioMixer: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
   musicSlider: {fileID: 6325050295960901655}

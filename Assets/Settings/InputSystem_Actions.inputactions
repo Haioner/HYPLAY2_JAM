@@ -1000,17 +1000,6 @@
                 },
                 {
                     "name": "",
-                    "id": "5bcfac48-0af6-471a-86da-76b535d5e3ab",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Options",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "48885feb-e4dc-447e-b783-976d31556c00",
                     "path": "<Keyboard>/p",
                     "interactions": "",

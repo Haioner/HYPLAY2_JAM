@@ -10223,7 +10223,7 @@ MonoBehaviour:
   playerHealth: {fileID: 780641086}
   shield: {fileID: 8757130}
   shieldSlider: {fileID: 1882594779}
-  shieldMaxValue: 2500
+  shieldMaxValue: 2000
   removeShieldFeedbacks: {fileID: 1515018711}
   addShieldFeedbacks: {fileID: 1219182457}
 --- !u!114 &780641084
