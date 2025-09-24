@@ -99,7 +99,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 50
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: playerNameaaaaaa
+  m_text: playerName
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df3fab475ba167540978daf0d8cd3bdb, type: 2}
   m_sharedMaterial: {fileID: -612120407800801572, guid: df3fab475ba167540978daf0d8cd3bdb, type: 2}
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 50
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
